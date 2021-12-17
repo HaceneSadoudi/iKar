@@ -33,7 +33,7 @@ class dbconnection {
 		//	self::$entityManager = \Doctrine\ORM\EntityManager::create($param, $config);
 		self::$entityManager = EntityManager::create($param, $config);
 
-		echo "is connected : " . self::$entityManager->getConnection()->getDatabase();
+		//echo "is connected : " . self::$entityManager->getConnection()->getDatabase();
 	}
 
 	public static function getInstance() {
