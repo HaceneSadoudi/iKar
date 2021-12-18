@@ -8,7 +8,7 @@ class mainController {
 	}
 
 	public static function testMvc($request, $context) {
-		$context->user = utilisateurTable::getUserByLoginAndPass($request['user'], $request['pass']);
+		$context->trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
 		return context::SUCCESS;
 	}
 }
