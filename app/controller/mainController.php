@@ -8,7 +8,7 @@ class mainController {
 	}
 
 	public static function testMvc($request, $context) {
-		$context->voyages = voyageTable::getVoyagesByTrajet($request['trajet']);
+		$context->reservations = reservationTable::getReservationByVoyage($request['voyage']);
 		return context::SUCCESS;
 	}
 }
