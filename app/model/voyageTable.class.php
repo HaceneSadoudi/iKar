@@ -12,12 +12,4 @@ class voyageTable {
         return $voyages;
     }
 
-    public static function getVoyage($depart, $arrivee) {
-        
-        $em = dbconnection::getInstance()->getEntityManager();
-        $voyageRepo = $em->getRepository('voyage');
-        $trajet = trajetTable::getTrajet($depart, $arrivee);
-        $voyages = $voyageRepo->findBy(array('trajet' => $trajet->id));
-        return $voyages;
-    } 
 }
