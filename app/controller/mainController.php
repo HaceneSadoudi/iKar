@@ -13,7 +13,9 @@ class mainController {
 	}
 
 	public static function chercherVoyage($request, $context) {
-		$trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
+		$depart = isset($request['depart']) ? $request['depart'] : "";
+		$arrivee = isset($request['arrivee']) ? $request['arrivee'] : "";
+		$trajet = trajetTable::getTrajet($depart, $arrivee);
 		$context->voyages = voyageTable::getVoyagesByTrajet($trajet);
 		return context::SUCCESS;
 	}
