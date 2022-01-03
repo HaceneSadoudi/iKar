@@ -1,27 +1,4 @@
-<div class="container" id="searchResult">
-    <div class="row">
-        <div class="col-4">
-            <div id="chercherVoyage">
-                <form id="chercherVoyageForm" action="" method="GET">
-                    <input hidden value="chercherVoyage" name="action">
-                    <div class="input-group input">
-                        <input list="depart" class="form-control autocomplete" name="depart" type="text">
-                        <span data-placeholder="Départ"></span>
-                    </div>
-                    <div class="input-group input">
-                        <input list="arrivee" class="form-control autocomplete" name="arrivee" type="text">
-                        <span class="" data-placeholder="Arrivée"></span>
-                    </div>
-                    <div class="input-group button">
-                        <input type="submit" value="Chercher" class="btn">
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-        <div class="col-4">
-            <?php if ($context->voyages != null && $context->params == true) {
+<?php if ($context->voyages != null && $context->params == true) {
                 echo
                 '<div  id="bandeau" class="col-12 no-padding m-0 alert alert-info alert-dismissible fade show">',
                 '<strong>Recherche Terminée</strong>',
@@ -90,7 +67,8 @@
                   </button>
               </div>';
             } ?>
-        </div>
+      
 
-    </div>
-</div>
+
+
+      
