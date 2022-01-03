@@ -12,7 +12,7 @@ class mainController {
 		return context::SUCCESS;
 	}
 
-	public static function chercherVoyage($request, $context) {
+	public static function rechercheVoyage($request, $context) {
 		$depart = isset($request['depart']) ? $request['depart'] : "";
 		$arrivee = isset($request['arrivee']) ? $request['arrivee'] : "";
 		$context->params = !isset($request['depart']) && !isset($request['arrivee']) ? false : true;

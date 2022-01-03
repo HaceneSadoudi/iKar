@@ -11,7 +11,7 @@
             <span class="" data-placeholder="Arrivée"></span>
         </div>
         <div class="input-group button">
-            <input type="submit" value="Chercher" class="btn">    
+            <input type="submit" value="Rechercher" class="btn">    
         </div>                                                                                                                                                                   
     </form>
 </div>
