@@ -1,0 +1,26 @@
+{
+  "name": "ikar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  },
+  "scripts": {
+    "sass": "node-sass scss/ -o css/ --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaceneSadoudi/iKar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaceneSadoudi/iKar/issues"
+  },
+  "homepage": "https://github.com/HaceneSadoudi/iKar#readme"
+}
