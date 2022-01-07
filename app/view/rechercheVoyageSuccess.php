@@ -1,61 +1,24 @@
-
-                <div  id="bandeau" style="display : none" class="no-padding m-0 alert alert-info alert-dismissible fade show">
-                    <strong>Recherche Terminée</strong>
+<div id="bandeau" style="display : none" class="no-padding m-0 alert alert-info alert-dismissible fade show">
+    <strong>Recherche Terminée</strong>
+</div>
+<ul class="search-list">
+    <?php $count = 0;
+    foreach ($context->voyages as $row) {
+        if ($count % 2 == 0) { ?>
+            <div class="row">
+            <?php } ?>
+            <li class="col-5 search-card">
+                <div>
+                    <p><strong>Heure de départ : </strong></p>
+                    <p><strong>Contraintes : </strong></p>
+                    <p>Il rest que 5 place(s) </p>
                 </div>
-                <ul class="search-list">
-                    <?php foreach ($context->voyages as $row) { ?>
-                        <li class="search-card">
-                            <div class="top">
-                                <div>
-                                    <div class="timeline">
-
-                                        <div class="box">
-
-                                            <div class="container d-flex">
-                                                 
-                                                <div class="lines">
-                                                    <div class="top">
-                                                        <span>Depart</span>
-                                                        <div class="dot"></div>  
-                                                        <span>15:30</span> 
-                                                    </div>                                                                        
-                                                    <div class="line"></div>
-                                                    <div class="bottom">
-                                                        <span>Depart</span>
-                                                        <div class="dot"></div>  
-                                                        <span>11:00</span> 
-                                                    </div>
-                                                </div>
-                                                
-                                        
-
-
-
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-                                    <h3 class="tarif">20$</h3>
-
-                                </div>
-                                <div class="bottom">
-
-                                    <div class="thumbnail">
-                                        <span class="name">John</span>
-                                    </div>
-                                    <p class="nbPlace">3 place reste</p>
-
-                                </div>
-                        </li>
-
-                    <?php } ?>
-                </ul>
-
-            
-      
-
-
-
-      
+                <div>
+                    <h2>900 €</h2>
+                </div>
+            </li>
+            <?php if ($count % 2 != 0) { ?>
+            </div>
+            <?php } $count++; ?>
+    <?php } ?>
+</ul>
