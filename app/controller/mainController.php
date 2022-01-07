@@ -18,6 +18,7 @@ class mainController {
 		$context->params = !isset($request['depart']) && !isset($request['arrivee']) ? false : true;
 		$trajet = trajetTable::getTrajet($depart, $arrivee);
 		$context->voyages = voyageTable::getVoyagesByTrajet($trajet);
+		if($context->voyages==false) return context::ERROR;
 		return context::SUCCESS;
 	}
 }
