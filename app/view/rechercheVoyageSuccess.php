@@ -1,24 +1,30 @@
-<div id="bandeau" style="display : none" class="no-padding m-0 alert alert-info alert-dismissible fade show">
+<div id="bandeau" style="display : none" class="alert alert-info alert-dismissible fade show">
     <strong>Recherche Terminée</strong>
 </div>
 <ul class="search-list">
     <?php $count = 0;
     foreach ($context->voyages as $row) {
         if ($count % 2 == 0) { ?>
-            <div class="row">
+            <div class="row justify-content-center">
             <?php } ?>
-            <li class="col-5 search-card">
-                <div>
-                    <p><strong>Heure de départ : </strong></p>
-                    <p><strong>Contraintes : </strong></p>
-                    <p>Il rest que 5 place(s) </p>
-                </div>
-                <div>
-                    <h2>900 €</h2>
-                </div>
-            </li>
+            <div class="col-6">
+                <li class="search-card">
+                    <div href="" class="reserve-btn">Resérver</div>
+                    <div class="content">
+                        <div>
+                            <p><b>Heure de départ : <?php echo $row->heureDepart, ":00" ?></b></p>
+                            <p><b>Contraintes : <?php echo $row->contraintes ?></b></p>
+                            <p>Il rest que <?php echo $row->nbPlace ?> place(s) </p>
+                        </div>
+                        <div>
+                            <h2><?php echo $row->tarif ?> €</h2>
+                        </div>
+                    </div>
+                </li>
+            </div>
             <?php if ($count % 2 != 0) { ?>
             </div>
-            <?php } $count++; ?>
+        <?php }
+            $count++; ?>
     <?php } ?>
 </ul>
