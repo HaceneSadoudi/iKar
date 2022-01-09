@@ -1,5 +1,7 @@
-<div id="bandeau" style="display : none" class="alert alert-info alert-dismissible fade show">
-    <strong>Recherche Terminée</strong>
+<div class="row">
+    <div id="bandeau" style="display : none" class="col-6 offset-3 alert alert-info alert-dismissible fade show">
+        <strong>Recherche Terminée</strong>
+    </div>
 </div>
 <ul class="search-list">
     <?php $count = 0;
