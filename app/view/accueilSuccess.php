@@ -1,25 +1,47 @@
 <div class="container">
     <div class="row ">
-        <div class="col-8 offset-2">
-            <div id="rechercheVoyage">
-                <form id="rechercheVoyageForm" action="" method="GET">
-                    <input hidden value="rechercheVoyage" name="action">
-                    <div class="input-group input">
-                        <input list="depart" class="form-control autocomplete" name="depart" type="text">
-                        <span data-placeholder="Départ"></span>
+        <div class="col-6 offset-3">
+            <form action="" method="POST" id="rechercheVoyageForm">
+                <input hidden value="rechercheVoyage" name="action">
+                <div class="step step-one active">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="depart" id="depart" placeholder="Ville de départ">
                     </div>
-                    <div class="input-group input">
-                        <input list="arrivee" class="form-control autocomplete" name="arrivee" type="text">
-                        <span class="" data-placeholder="Arrivée"></span>
+                    <div class="wrap-btn first">
+                        <button type="button" class="next-btn">Suivant</button>
                     </div>
-                    <div class="input-group button">
-                        <input type="submit" value="Recherche" class="btn">
+                </div>
+                <div class="step step-two">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="arrivee" id="arrivee" placeholder="Ville d'arrivée">
                     </div>
-                </form>
-            </div>
+                    <div class="wrap-btn">
+                        <button type="button" class="prev-btn">Précédent</button>
+                        <button type="button" class="next-btn">Suivant</button>
+                    </div>
+                </div>
+                <div class="step step-three">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="nbplaces" id="nbplaces" placeholder="Nombre de places">
+                    </div>
+                    <div class="wrap-btn">
+                        <button type="button" class="prev-btn">Précédent</button>
+                        <button type="submit" class="next-btn search-btn">Rechercher</button>
+                    </div>
+                </div>
+                <div class="step step-four">
+                    <a href="javascrip:void(0)" class="next-btn">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <span class="depart"></span>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        <span class="arrivee"></span>
+                    </a>
+                </div>
+            </form>
+
         </div>
     </div>
     <div class="row">
-        <div class="col-8 offset-2" id="searchResult"></div>
+        <div class="col-10 offset-1" id="searchResult"></div>
     </div>
 </div>
