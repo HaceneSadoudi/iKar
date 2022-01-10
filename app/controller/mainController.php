@@ -44,4 +44,13 @@ class mainController {
 
 		return context::SUCCESS;
 	}
+
+
+
+	public static function deconnexion($request, $context) {
+		session_destroy();
+		global $nameApp;
+		$context->redirect('index.php?action=accueil');
+		return context::SUCCESS;
+	}
 }
