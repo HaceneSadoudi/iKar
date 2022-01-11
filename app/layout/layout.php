@@ -7,12 +7,15 @@
   <title>
     Ton appli !
   </title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-  <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/mainStyle.css">
 </head>
 
-<body>
+<body style="position-relative" >
+  <div id="bandeau" class="alert alert-info alert-dismissible fade">
+    <strong class="content"></strong>
+  </div>
   <?php include("app/view/inc/header.inc.php") ?>
   <?php if ($context->getSessionAttribute('user_id')) : ?>
     <?php echo $context->getSessionAttribute('user_id') . " est connecte"; ?>
