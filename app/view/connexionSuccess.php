@@ -1,14 +1,9 @@
-
-    
-
 <div class="sign-container" id="sign-container">
     <div class="form-container sign-up-container">
         <form action="#">
             <h1>Inscription</h1>
             <div class="social-container">
-                <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
-                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+                <div  class="g-signin2" data-longtitle="true" data-onsuccess="onSignIn">sssssssss</div>
             </div>
             <span>Ou utilisez votre email pour l'inscription</span>
             <input type="text" placeholder="Nome" />
@@ -25,9 +20,7 @@
         <form action="" id="connexionForm">
             <h1>Connexion</h1>
             <div class="social-container">
-                <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
-                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+                <div id="sgn" class="g-signin2" data-onsuccess="onSignIn">cccccccc</div>
             </div>
             <span>Ou utilisez votre email</span>
             <input type="text" placeholder="Pseudo" name="pseudo" />

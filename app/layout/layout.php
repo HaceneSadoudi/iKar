@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+  <meta name="google-signin-client_id" content="393206312020-qrt02hp5bolq0diifh95qia7rc20lcqu.apps.googleusercontent.com">
   <title>
     Ton appli !
   </title>
@@ -38,6 +38,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="js/dispatcherAjax.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="js/main.js"></script>
 </body>
 
