@@ -3,16 +3,21 @@
         <form action="#">
             <h1>Inscription</h1>
             <div class="social-container">
-                <div  class="g-signin2" data-longtitle="true" data-onsuccess="onSignIn">sssssssss</div>
+                <div id="g-sign-up" class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
             <span>Ou utilisez votre email pour l'inscription</span>
-            <input type="text" placeholder="Nome" />
-            <input type="text" placeholder="Prénom" />
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" placeholder="Nome" />
+                </div>
+                <div class="col">
+                    <input type="text" placeholder="Prénom" />
+                </div>
+            </div>
             <input type="text" placeholder="Pseudo" />
             <input type="text" placeholder="Date de naissance" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Mot de passe" />
-            <input type="password" placeholder="Confirmation de mot de passe" />
             <button>Inscription</button>
         </form>
     </div>
@@ -20,7 +25,7 @@
         <form action="" id="connexionForm">
             <h1>Connexion</h1>
             <div class="social-container">
-                <div id="sgn" class="g-signin2" data-onsuccess="onSignIn">cccccccc</div>
+                <div id="g-sign-in" class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
             <span>Ou utilisez votre email</span>
             <input type="text" placeholder="Pseudo" name="pseudo" />
