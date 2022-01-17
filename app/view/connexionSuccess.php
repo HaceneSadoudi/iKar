@@ -17,7 +17,11 @@
             <input type="text" placeholder="Pseudo" />
             <input type="text" placeholder="Date de naissance" />
             <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Mot de passe" />
+            <div class="input-group">
+                <input type="password" class="password" placeholder="Mot de passe" />
+                <button type="button" class="pwdToggle"><i class="fa fa-eye" aria-hidden="true"></i></button>
+            </div>
+
             <button>Inscription</button>
         </form>
     </div>
@@ -29,7 +33,10 @@
             </div>
             <span>Ou utilisez votre email</span>
             <input type="text" placeholder="Pseudo" name="pseudo" />
-            <input type="password" placeholder="Mot de passe" name="pass" />
+            <div class="input-group">
+                <input type="password" class="password" placeholder="Mot de passe" name="pass"/>
+                <button type="button" class="pwdToggle"><i class="fa fa-eye" aria-hidden="true"></i></button>
+            </div>
             <a href="#">Mot de pass oublier?</a>
             <button type="submit" id="seConnecter">Se connecter</button>
         </form>
