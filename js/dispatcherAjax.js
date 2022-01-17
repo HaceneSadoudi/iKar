@@ -107,4 +107,24 @@ $(document).ready(function () {
     });
   });
 
-});
+  // DECONNEXION
+  $(document).on("click", "#deco", (e) => {
+    alert("deco");
+    e.preventDefault();
+
+    $.ajax({
+      // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
+      url: "dispatcherAjax.php?action=deconnexion",
+      type: "POST",
+      dataType: "text",
+      success: function (code_html, statut) {
+        // code_html contient le HTML renvoyé
+      },
+      error: function (jqXhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+      },
+    });
+  });
+
+  
+  });
