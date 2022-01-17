@@ -77,4 +77,34 @@ $(document).ready(function () {
   });
 
 
+  // ####################  CONNEXION  #########################
+  $("#page_maincontent").on("submit", "#connexionForm", (e) => {
+    e.preventDefault();
+
+    var pseudo = $("#connexionForm input[name=pseudo]").val().trim();
+    var pass = $("#connexionForm input[name=pass]").val().trim();
+
+    $.ajax({
+      // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
+      url: "dispatcherAjax.php?action=connexion",
+      type: "POST",
+      data: "pseudo=" + pseudo + "&pass=" + pass,
+      dataType: "text",
+      success: function (code_html, statut) {
+        // code_html contient le HTML renvoyé
+        var obj = JSON.parse(code_html);
+        if (obj == null) {
+          $("#bandeau .content").text("L'utilisateur n'existe pas!");
+          $("#bandeau").show().delay(4000).fadeOut();
+        } else {
+          window.location.href = "index.php?acion=accueil";
+        }
+        //$("#page_maincontent").empty();
+      },
+      error: function (jqXhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+      },
+    });
   });
+
+});
