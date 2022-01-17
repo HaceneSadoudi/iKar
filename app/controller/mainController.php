@@ -41,7 +41,6 @@ class mainController {
 				return context::NONE;
 			}
 		}
-
 		return context::SUCCESS;
 	}
 
@@ -52,5 +51,21 @@ class mainController {
 		global $nameApp;
 		$context->redirect('index.php?action=accueil');
 		return context::SUCCESS;
+	}
+
+
+	public static function inscription($request, $context) {
+		$user = utilisateurTable::getUserByID($request['identifiant']);
+		if($user == NULL) {
+			$user = utilisateurTable::setUser(
+				$request['identifiant'],
+				$request['pass'],
+				$request['nom'],
+				$request['prenom']);
+				echo $user;
+		}else {
+			echo null;
+		}
+		return context::NONE;
 	}
 }
