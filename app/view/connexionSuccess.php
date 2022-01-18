@@ -1,24 +1,17 @@
 <div class="sign-container" id="sign-container">
     <div class="form-container sign-up-container">
-        <form action="#">
+        <form action="#" id="inscriptionForm">
             <h1>Inscription</h1>
             <div class="social-container">
                 <div id="g-sign-up" class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
             <span>Ou utilisez votre email pour l'inscription</span>
-            <div class="form-row">
-                <div class="col">
-                    <input type="text" placeholder="Nome" />
-                </div>
-                <div class="col">
-                    <input type="text" placeholder="Prénom" />
-                </div>
-            </div>
-            <input type="text" placeholder="Pseudo" />
+            <input name="nom" type="text" placeholder="Nom" />
+            <input name="prenom" type="text" placeholder="Prénom" />
             <input type="text" placeholder="Date de naissance" />
-            <input type="email" placeholder="Email" />
+            <input name="identifiant" type="text" placeholder="Pseudo" />
             <div class="input-group">
-                <input type="password" class="password" placeholder="Mot de passe" />
+                <input type="password" name="pass" class="password" placeholder="Mot de passe" />
                 <button type="button" class="pwdToggle"><i class="fa fa-eye" aria-hidden="true"></i></button>
             </div>
 
