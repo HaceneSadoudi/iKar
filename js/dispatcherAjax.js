@@ -129,5 +129,41 @@ $(document).ready(function () {
     });
   });
 
+   // ####################  INSCRIPTION  #########################
+   $("#page_maincontent").on("submit", "#inscriptionForm", (e) => {
+    e.preventDefault();
+    var fdata = $("#inscriptionForm").serialize();
+    
+    $.ajax({
+      // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
+      url: "dispatcherAjax.php?action=inscription",
+      type: "POST",
+      data: fdata,
+      dataType: "text",
+      success: function (response, statut) {
+        if (response == 0) {
+          $("#bandeau").removeClass("success").addClass("error");
+          $("#bandeau .content").text("L'identifiant de l'utilisateur existe déjà");
+          $("#bandeau").show().delay(4000).fadeOut();
+        } else if(response == 11 || response == 10) {
+          $("#bandeau").removeClass("error").addClass("success");
+          $("#bandeau .content").text("Votre compte a été créé avec succès");
+          $("#bandeau").show().delay(4000).fadeOut();
+          setTimeout(function() {
+            window.location.href = "index.php";
+          },2500); 
+        }else {
+          $("#bandeau").removeClass("success").addClass("error");
+          $("#bandeau .content").text("Une erreur s'est produite. Veuillez réessayer plus tard");
+          $("#bandeau").show().delay(4000).fadeOut();
+        }
+        //$("#page_maincontent").empty();
+      },
+      error: function (jqXhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+      },
+    });
+  });
+
   
   });
