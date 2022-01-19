@@ -12,8 +12,39 @@
   --color-text-primary-offset: #3e4958;
   --color-yellow: #fdc501;
   // ALERT
-  --color-success : #1aaa55;
-  --color-warning : #fc9403;
-  --color-info    : #1f78d1;
-  --color-error   : #db3b21;
+  --color-success: #1aaa55;
+  --color-warning: #fc9403;
+  --color-info: #1f78d1;
+  --color-error: #db3b21;
+}
+
+// GENERAL STYLE
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Poppins", Helvetica, sans-serif;
+  font-weight: 600;
+  position: relative;
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a,
+  a:hover,
+  a:focus,
+  a:active {
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
 }
