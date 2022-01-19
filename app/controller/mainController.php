@@ -23,13 +23,11 @@ class mainController {
 
 	public static function connexion($request, $context) {
 
-		if (isset($request['pseudo']) && isset($request['pass'])) {
-			$pseudo = $request['pseudo'];
+		if (isset($request['identifiant']) && isset($request['pass'])) {
+			$identifiant = $request['identifiant'];
 			$pass = $request['pass'];
-
-			if (!empty($pseudo) && !empty($pass)) {
-				$exist = utilisateurTable::getUserByLoginAndPass($pseudo, $pass);
-				echo json_encode($exist);
+			if (!empty($identifiant) && !empty($pass)) {
+				$exist = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
 				if ($exist) {
 					$context->setSessionAttribute('is_logged', 'true');
 					$context->setSessionAttribute('id', $exist->id);
@@ -37,6 +35,9 @@ class mainController {
 					$context->setSessionAttribute('nom', $exist->nom);
 					$context->setSessionAttribute('prenom', $exist->prenom);
 					$context->setSessionAttribute('image', $exist->avatar);
+					echo 1;
+				} else {
+					echo 0;
 				}
 				return context::NONE;
 			}
@@ -56,15 +57,17 @@ class mainController {
 
 	public static function inscription($request, $context) {
 		$user = utilisateurTable::getUserByID($request['identifiant']);
-		if($user == NULL) {
+		if ($user == NULL) {
 			$user = utilisateurTable::setUser(
 				$request['identifiant'],
 				$request['pass'],
 				$request['nom'],
-				$request['prenom']);
-				echo $user;
-		}else {
-			echo null;
+				$request['prenom']
+			);
+			echo 1;
+			mainController::connexion($request, $context);
+		} else {
+			echo 0;
 		}
 		return context::NONE;
 	}

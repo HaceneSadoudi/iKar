@@ -18,9 +18,7 @@ class utilisateurTable {
         $em = dbconnection::getInstance()->getEntityManager();
 
         $userRepository = $em->getRepository('utilisateur');
-        echo "<br>hhh<br>";
-        $user = $userRepository->findOneBy(array('id' => $id));
-        if ($user == false) echo "<br>Erreur SQL<br>";
+        $user = $userRepository->findOneBy(array('identifiant' => $id));
         return $user;
     }
 
