@@ -6,7 +6,6 @@ $(document).ready(function () {
     e.preventDefault(); // Stop from submitting
 
     var formData = $(this).serialize();
-    alert($(this).html());
     var depart = $("input[name=depart]").val().trim();
     var arrivee = $("input[name=arrivee]").val().trim();
     if (depart == "" || arrivee == "") $(".step.step-four .next-btn").click();
@@ -19,7 +18,6 @@ $(document).ready(function () {
       data: formData,
       dataType: "text",
       success: function (code_html, statut) {
-        // code_html contient le HTML renvoyé
         $("#searchResult").html(code_html);
         $("#bandeau .content").text("Recherche Terminé");
         $("#bandeau").show().delay(4000).animate({ opacity: 0 });
@@ -80,26 +78,33 @@ $(document).ready(function () {
   // ####################  CONNEXION  #########################
   $("#page_maincontent").on("submit", "#connexionForm", (e) => {
     e.preventDefault();
-
-    var pseudo = $("#connexionForm input[name=pseudo]").val().trim();
+    
+    var identifiant = $("#connexionForm input[name=identifiant]").val().trim();
     var pass = $("#connexionForm input[name=pass]").val().trim();
 
     $.ajax({
       // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
       url: "dispatcherAjax.php?action=connexion",
       type: "POST",
-      data: "pseudo=" + pseudo + "&pass=" + pass,
+      data: "identifiant=" + identifiant + "&pass=" + pass,
       dataType: "text",
-      success: function (code_html, statut) {
-        // code_html contient le HTML renvoyé
-        var obj = JSON.parse(code_html);
-        if (obj == null) {
-          $("#bandeau .content").text("L'utilisateur n'existe pas!");
+      success: function (response, statut) {
+        if (response == 0) {
+          $("#bandeau").removeClass("success").addClass("error");
+          $("#bandeau .content").text("L'identifiant ou le mot de passe est invalide");
           $("#bandeau").show().delay(4000).fadeOut();
-        } else {
-          window.location.href = "index.php?acion=accueil";
+        } else if(response == 1) {
+          $("#bandeau").removeClass("error").addClass("success");
+          $("#bandeau .content").text("Vous êtes connecté");
+          $("#bandeau").show().delay(4000).fadeOut();
+          setTimeout(function() {
+            window.location.href = "index.php";
+          },2500); 
+        }else {
+          $("#bandeau").removeClass("success").addClass("error");
+          $("#bandeau .content").text("Une erreur s'est produite. Veuillez réessayer plus tard");
+          $("#bandeau").show().delay(4000).fadeOut();
         }
-        //$("#page_maincontent").empty();
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
@@ -109,7 +114,6 @@ $(document).ready(function () {
 
   // DECONNEXION
   $(document).on("click", "#deco", (e) => {
-    alert("deco");
     e.preventDefault();
 
     $.ajax({
@@ -118,7 +122,6 @@ $(document).ready(function () {
       type: "POST",
       dataType: "text",
       success: function (code_html, statut) {
-        // code_html contient le HTML renvoyé
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
