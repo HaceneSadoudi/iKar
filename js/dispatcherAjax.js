@@ -88,6 +88,7 @@ $(document).ready(function () {
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
+        notif("error", "Une erreur s'est produite. Veuillez réessayer plus tard");
       },
     });
   });
@@ -133,6 +134,7 @@ $(document).ready(function () {
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
+        notif("error", "Une erreur s'est produite. Veuillez réessayer plus tard");
       },
     });
   });
