@@ -141,18 +141,7 @@ $(document).ready(function () {
   /* #######################  DECONNEXION  ####################### */
   /* ############################################################# */
   $(document).on("click", "#deco", (e) => {
-    e.preventDefault();
-
-    $.ajax({
-      // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
-      url: "dispatcherAjax.php?action=deconnexion",
-      type: "POST",
-      dataType: "text",
-      success: function (code_html, statut) {},
-      error: function (jqXhr, textStatus, errorThrown) {
-        console.log(errorThrown);
-      },
-    });
+    notif("success", "Vous êtes déconnecté");
   });
 
   /* ############################################################# */
