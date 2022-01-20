@@ -1,5 +1,23 @@
 $(document).ready(function () {
-  // RECHERCHE VOYAGE
+
+  /* ############################################################# */
+  /* #######################  HANDLE NOTIF  ###################### */
+  /* ############################################################# */
+  var notif = (type, msg, duration = 4000) => {
+    var types = ['error', 'success', 'warning', 'info'];
+    for(const e of types) {
+      $("#bandeau").removeClass(e);console.log(e);
+    }
+    $("#bandeau").addClass(type);
+    $("#bandeau .content").text(msg);
+    $("#bandeau").show().delay(duration).fadeOut();
+  }
+
+
+
+  /* ############################################################# */
+  /* ####################  RECHERCHE VOYAGE  ##################### */
+  /* ############################################################# */
   $("#page_maincontent").on("submit", "#rechercheVoyageForm", function (e) {
     e.preventDefault(); // Stop from submitting
 
@@ -16,14 +34,16 @@ $(document).ready(function () {
       data: formData,
       dataType: "text",
       success: function (code_html, statut) {
-        $("#searchResult").html(code_html);
+        /* $("#searchResult").html(code_html);
         $("#bandeau .content").text("Recherche Terminé");
-        $("#bandeau").show().delay(4000).animate({ opacity: 0 });
+        $("#bandeau").show().delay(4000).animate({ opacity: 0 }); */
+        notif("success", "Recherche Terminé");
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
-        $("#bandeau .content").text("Désolé, une erreur s'est produite");
-        $("#bandeau").show().delay(4000).fadeOut();
+        notif("error", "Une erreur s'est produite. Veuillez réessayer plus tard");
+       /*  $("#bandeau .content").text("Désolé, une erreur s'est produite");
+        $("#bandeau").show().delay(4000).fadeOut(); */
       },
     });
   });
@@ -88,24 +108,27 @@ $(document).ready(function () {
       dataType: "text",
       success: function (response, statut) {
         if (response == 0) {
-          $("#bandeau").removeClass("success").addClass("error");
+         /*  $("#bandeau").removeClass("success").addClass("error");
           $("#bandeau .content").text(
             "L'identifiant ou le mot de passe est invalide"
           );
-          $("#bandeau").show().delay(4000).fadeOut();
+          $("#bandeau").show().delay(4000).fadeOut(); */
+          notif("error", "L'identifiant ou le mot de passe est invalide");
         } else if (response == 1) {
-          $("#bandeau").removeClass("error").addClass("success");
+          /* $("#bandeau").removeClass("error").addClass("success");
           $("#bandeau .content").text("Vous êtes connecté");
-          $("#bandeau").show().delay(4000).fadeOut();
+          $("#bandeau").show().delay(4000).fadeOut(); */
+          notif("success", "Vous êtes connecté");
           setTimeout(function () {
             window.location.href = "index.php";
           }, 2500);
         } else {
-          $("#bandeau").removeClass("success").addClass("error");
+          /* $("#bandeau").removeClass("success").addClass("error");
           $("#bandeau .content").text(
             "Une erreur s'est produite. Veuillez réessayer plus tard"
           );
-          $("#bandeau").show().delay(4000).fadeOut();
+          $("#bandeau").show().delay(4000).fadeOut(); */
+          notif("error", "Une erreur s'est produite. Veuillez réessayer plus tard");
         }
       },
       error: function (jqXhr, textStatus, errorThrown) {
@@ -147,28 +170,32 @@ $(document).ready(function () {
       dataType: "text",
       success: function (response, statut) {
         if (response == 0) {
-          $("#bandeau").removeClass("success").addClass("error");
+          /* $("#bandeau").removeClass("success").addClass("error");
           $("#bandeau .content").text(
             "L'identifiant de l'utilisateur existe déjà"
           );
-          $("#bandeau").show().delay(4000).fadeOut();
+          $("#bandeau").show().delay(4000).fadeOut(); */
+          notif("error", "L'identifiant de l'utilisateur existe déjà");
         } else if (response == 11 || response == 10) {
-          $("#bandeau").removeClass("error").addClass("success");
+          /* $("#bandeau").removeClass("error").addClass("success");
           $("#bandeau .content").text("Votre compte a été créé avec succès");
-          $("#bandeau").show().delay(4000).fadeOut();
+          $("#bandeau").show().delay(4000).fadeOut(); */
+          notif("success", "Votre compte a été créé avec succès");
           setTimeout(function () {
             window.location.href = "index.php";
           }, 2500);
         } else {
-          $("#bandeau").removeClass("success").addClass("error");
+          /* $("#bandeau").removeClass("success").addClass("error");
           $("#bandeau .content").text(
             "Une erreur s'est produite. Veuillez réessayer plus tard"
           );
-          $("#bandeau").show().delay(4000).fadeOut();
+          $("#bandeau").show().delay(4000).fadeOut(); */
+          notif("error", "Une erreur s'est produite. Veuillez réessayer plus tard");
         }
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
+        notif("error", "Une erreur s'est produite. Veuillez réessayer plus tard");
       },
     });
   });
