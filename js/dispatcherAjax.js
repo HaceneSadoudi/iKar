@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  
-  
   // RECHERCHE VOYAGE
   $("#page_maincontent").on("submit", "#rechercheVoyageForm", function (e) {
     e.preventDefault(); // Stop from submitting
@@ -74,35 +72,39 @@ $(document).ready(function () {
     });
   });
 
-
-  // ####################  CONNEXION  #########################
+  /* ############################################################# */
+  /* #######################  CONNEXION  ######################### */
+  /* ############################################################# */
   $("#page_maincontent").on("submit", "#connexionForm", (e) => {
     e.preventDefault();
-    
-    var identifiant = $("#connexionForm input[name=identifiant]").val().trim();
-    var pass = $("#connexionForm input[name=pass]").val().trim();
+
+    var formData = $("#connexionForm").serialize();
 
     $.ajax({
       // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
       url: "dispatcherAjax.php?action=connexion",
       type: "POST",
-      data: "identifiant=" + identifiant + "&pass=" + pass,
+      data: formData,
       dataType: "text",
       success: function (response, statut) {
         if (response == 0) {
           $("#bandeau").removeClass("success").addClass("error");
-          $("#bandeau .content").text("L'identifiant ou le mot de passe est invalide");
+          $("#bandeau .content").text(
+            "L'identifiant ou le mot de passe est invalide"
+          );
           $("#bandeau").show().delay(4000).fadeOut();
-        } else if(response == 1) {
+        } else if (response == 1) {
           $("#bandeau").removeClass("error").addClass("success");
           $("#bandeau .content").text("Vous êtes connecté");
           $("#bandeau").show().delay(4000).fadeOut();
-          setTimeout(function() {
+          setTimeout(function () {
             window.location.href = "index.php";
-          },2500); 
-        }else {
+          }, 2500);
+        } else {
           $("#bandeau").removeClass("success").addClass("error");
-          $("#bandeau .content").text("Une erreur s'est produite. Veuillez réessayer plus tard");
+          $("#bandeau .content").text(
+            "Une erreur s'est produite. Veuillez réessayer plus tard"
+          );
           $("#bandeau").show().delay(4000).fadeOut();
         }
       },
@@ -112,7 +114,9 @@ $(document).ready(function () {
     });
   });
 
-  // DECONNEXION
+  /* ############################################################# */
+  /* #######################  DECONNEXION  ####################### */
+  /* ############################################################# */
   $(document).on("click", "#deco", (e) => {
     e.preventDefault();
 
@@ -121,19 +125,20 @@ $(document).ready(function () {
       url: "dispatcherAjax.php?action=deconnexion",
       type: "POST",
       dataType: "text",
-      success: function (code_html, statut) {
-      },
+      success: function (code_html, statut) {},
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
       },
     });
   });
 
-   // ####################  INSCRIPTION  #########################
-   $("#page_maincontent").on("submit", "#inscriptionForm", (e) => {
+  /* ############################################################# */
+  /* #######################  INSCRIPTION  ####################### */
+  /* ############################################################# */
+  $("#page_maincontent").on("submit", "#inscriptionForm", (e) => {
     e.preventDefault();
     var fdata = $("#inscriptionForm").serialize();
-    
+
     $.ajax({
       // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
       url: "dispatcherAjax.php?action=inscription",
@@ -143,27 +148,28 @@ $(document).ready(function () {
       success: function (response, statut) {
         if (response == 0) {
           $("#bandeau").removeClass("success").addClass("error");
-          $("#bandeau .content").text("L'identifiant de l'utilisateur existe déjà");
+          $("#bandeau .content").text(
+            "L'identifiant de l'utilisateur existe déjà"
+          );
           $("#bandeau").show().delay(4000).fadeOut();
-        } else if(response == 11 || response == 10) {
+        } else if (response == 11 || response == 10) {
           $("#bandeau").removeClass("error").addClass("success");
           $("#bandeau .content").text("Votre compte a été créé avec succès");
           $("#bandeau").show().delay(4000).fadeOut();
-          setTimeout(function() {
+          setTimeout(function () {
             window.location.href = "index.php";
-          },2500); 
-        }else {
+          }, 2500);
+        } else {
           $("#bandeau").removeClass("success").addClass("error");
-          $("#bandeau .content").text("Une erreur s'est produite. Veuillez réessayer plus tard");
+          $("#bandeau .content").text(
+            "Une erreur s'est produite. Veuillez réessayer plus tard"
+          );
           $("#bandeau").show().delay(4000).fadeOut();
         }
-        //$("#page_maincontent").empty();
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
       },
     });
   });
-
-  
-  });
+});
