@@ -6,12 +6,12 @@
                 <div id="g-sign-up" class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
             <span>Ou utilisez votre email pour l'inscription</span>
-            <input name="nom" type="text" placeholder="Nom" />
-            <input name="prenom" type="text" placeholder="Prénom" />
+            <input name="rnom" type="text" placeholder="Nom" />
+            <input name="rprenom" type="text" placeholder="Prénom" />
             <input type="text" placeholder="Date de naissance" />
-            <input name="identifiant" type="text" placeholder="Pseudo" />
+            <input name="ridentifiant" type="text" placeholder="Pseudo" />
             <div class="input-group">
-                <input type="password" name="pass" class="password" placeholder="Mot de passe" />
+                <input type="password" name="rpass" class="password" placeholder="Mot de passe" />
                 <button type="button" class="pwdToggle"><i class="fa fa-eye" aria-hidden="true"></i></button>
             </div>
 
@@ -19,15 +19,15 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="" id="connexionForm">
+        <form action="" id="connexionForm" method="POST">
             <h1>Connexion</h1>
             <div class="social-container">
                 <div id="g-sign-in" class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
             <span>Ou utilisez votre email</span>
-            <input type="text" placeholder="Pseudo" name="pseudo" />
+            <input type="text" placeholder="Identifiant" name="lidentifiant" />
             <div class="input-group">
-                <input type="password" class="password" placeholder="Mot de passe" name="pass"/>
+                <input type="password" class="password" placeholder="Mot de passe" name="lpass"/>
                 <button type="button" class="pwdToggle"><i class="fa fa-eye" aria-hidden="true"></i></button>
             </div>
             <a href="#">Mot de pass oublier?</a>

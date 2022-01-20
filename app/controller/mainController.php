@@ -23,9 +23,9 @@ class mainController {
 
 	public static function connexion($request, $context) {
 
-		if (isset($request['identifiant']) && isset($request['pass'])) {
-			$identifiant = $request['identifiant'];
-			$pass = $request['pass'];
+		if (isset($request['lidentifiant']) && isset($request['lpass'])) {
+			$identifiant = $request['lidentifiant'];
+			$pass = $request['lpass'];
 			if (!empty($identifiant) && !empty($pass)) {
 				$exist = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
 				if ($exist) {
@@ -56,15 +56,17 @@ class mainController {
 
 
 	public static function inscription($request, $context) {
-		$user = utilisateurTable::getUserByID($request['identifiant']);
+		$user = utilisateurTable::getUserByID($request['ridentifiant']);
 		if ($user == NULL) {
 			$user = utilisateurTable::setUser(
-				$request['identifiant'],
-				$request['pass'],
-				$request['nom'],
-				$request['prenom']
+				$request['ridentifiant'],
+				$request['rpass'],
+				$request['rnom'],
+				$request['rprenom']
 			);
 			echo 1;
+			$request['lidentifiant'] = $request['ridentifiant'];
+			$request['lpass'] = $request['rpass'];
 			mainController::connexion($request, $context);
 		} else {
 			echo 0;

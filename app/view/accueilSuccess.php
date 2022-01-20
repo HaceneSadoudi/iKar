@@ -1,7 +1,6 @@
 <div class="">
     <div class="container">
         <div class="row justify-content-end">
-
             <div class="col-4">
                 <form action="" method="POST" id="rechercheVoyageForm">
                     <input hidden value="rechercheVoyage" name="action">
