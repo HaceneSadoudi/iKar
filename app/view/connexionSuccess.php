@@ -25,9 +25,15 @@
                 <div id="g-sign-in" class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
             <span>Ou utilisez votre email</span>
-            <input type="text" placeholder="Identifiant" name="lidentifiant" />
+            <!-- Identifiant -->
             <div class="input-group">
-                <input type="password" class="password" placeholder="Mot de passe" name="lpass"/>
+                <input type="text" placeholder="Identifiant" name="lidentifiant" />
+                <span class="alert-message">Error</span>
+            </div>
+            <!-- Password -->
+            <div class="input-group">
+                <input type="password" class="password" placeholder="Mot de passe" name="lpass" />
+                <span class="alert-message">Error</span>
                 <button type="button" class="pwdToggle"><i class="fa fa-eye" aria-hidden="true"></i></button>
             </div>
             <a href="#">Mot de pass oublier?</a>
