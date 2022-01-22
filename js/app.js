@@ -1,5 +1,7 @@
 $(document).ready(function () {
-  // PASSWORD HIDE/SHOW TOGGLE
+  /* ############################################################# */
+  /* ################  PASSWORD HIDE/SHOW TOGGLE  ################ */
+  /* ############################################################# */
   $(document).on("click", ".pwdToggle", (e) => {
     var pwdInput = $(e.currentTarget).parent().find("input");
     var icon =
@@ -15,26 +17,23 @@ $(document).ready(function () {
     }
   });
 
+  /* ############################################################# */
+  /* ####################  LOGIN VALIDATION  ##################### */
+  /* ############################################################# */
   loginValidation = function () {
     let loginUsername = $("#connexionForm input[type=text]"),
       loginPassword = $("#connexionForm input[type=password]"),
       valid = true;
 
-    if (loginUsername.val().trim().length < 4) {
-      showError(
-        loginUsername,
-        "L'identifiant doit comporter au moins 4 caractères"
-      );
+    if (loginUsername.val().trim().length == 0) {
+      showError(loginUsername, "L'identifiant ne peut pas être vide");
       valid = false;
     } else {
       showSuccess(loginUsername);
     }
 
-    if (loginPassword.val().trim().length < 6) {
-      showError(
-        loginPassword,
-        "Le mot de passe doit comporter au moins 6 caractères"
-      );
+    if (loginPassword.val().trim().length == 0) {
+      showError(loginPassword, "Le mot de passe ne peut pas être vide");
       valid = false;
     } else {
       showSuccess(loginPassword);
@@ -42,11 +41,61 @@ $(document).ready(function () {
     return valid;
   };
 
+  /* ############################################################# */
+  /* ###################  SIGN-UP VALIDATION  #################### */
+  /* ############################################################# */
+  signUpValidation = function () {
+    let signupLastname = $("#inscriptionForm input[name=rnom]"),
+      signupFirstname = $("#inscriptionForm input[name=rprenom]"),
+      signupUsername = $("#inscriptionForm input[name=ridentifiant]"),
+      signupPassword = $("#inscriptionForm input[name=rpass]"),
+      valid = true;
+
+    if (signupLastname.val().trim().length == 0) {
+      showError(signupLastname, "Le nom ne peut pas être vide");
+      valid = false;
+    } else {
+      showSuccess(signupLastname);
+    }
+
+    if (signupFirstname.val().trim().length == 0) {
+      showError(signupFirstname, "Le prénom ne peut pas être vide");
+      valid = false;
+    } else {
+      showSuccess(signupFirstname);
+    }
+    if (signupUsername.val().trim().length < 4) {
+      showError(
+        signupUsername,
+        "L'identifiant doit comporter au moins 4 caractères"
+      );
+      valid = false;
+    } else {
+      showSuccess(signupUsername);
+    }
+    if (signupPassword.val().trim().length < 6) {
+      showError(
+        signupPassword,
+        "Le mot de passe doit comporter au moins 6 caractères"
+      );
+      valid = false;
+    } else {
+      showSuccess(signupPassword);
+    }
+    return valid;
+  };
+
+  /* ############################################################# */
+  /* ####################  INPUT ERROR SHOW  ##################### */
+  /* ############################################################# */
   var showError = function (input, message) {
     const alert_message = input.next();
     alert_message.css("visibility", "visible");
     alert_message.text(message);
   };
+  /* ############################################################# */
+  /* ####################  INPUT ERROR HIDE  ##################### */
+  /* ############################################################# */
   var showSuccess = function (input) {
     const alert_message = input.next();
     alert_message.css("visibility", "hidden");
