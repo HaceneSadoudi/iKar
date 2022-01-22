@@ -6,12 +6,25 @@
                 <div id="g-sign-up" class="g-signin2" data-onsuccess="onSignIn"></div>
             </div>
             <span>Ou utilisez votre email pour l'inscription</span>
-            <input name="rnom" type="text" placeholder="Nom" />
-            <input name="rprenom" type="text" placeholder="Prénom" />
-            <input type="text" placeholder="Date de naissance" />
-            <input name="ridentifiant" type="text" placeholder="Pseudo" />
+            <div class="input-group">
+                <input name="rnom" type="text" placeholder="Nom" />
+                <span class="alert-message">Error</span>
+            </div>
+            <div class="input-group">
+                <input name="rprenom" type="text" placeholder="Prénom" />
+                <span class="alert-message">Error</span>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Date de naissance" />
+                <span class="alert-message">Error</span>
+            </div>
+            <div class="input-group">
+                <input name="ridentifiant" type="text" placeholder="Pseudo" />
+                <span class="alert-message">Error</span>
+            </div>
             <div class="input-group">
                 <input type="password" name="rpass" class="password" placeholder="Mot de passe" />
+                <span class="alert-message">Error</span>
                 <button type="button" class="pwdToggle"><i class="fa fa-eye" aria-hidden="true"></i></button>
             </div>
 
