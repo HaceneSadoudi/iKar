@@ -15,10 +15,6 @@
                 <span class="alert-message">Error</span>
             </div>
             <div class="input-group">
-                <input type="text" placeholder="Date de naissance" />
-                <span class="alert-message">Error</span>
-            </div>
-            <div class="input-group">
                 <input name="ridentifiant" type="text" placeholder="Pseudo" />
                 <span class="alert-message">Error</span>
             </div>
@@ -28,7 +24,7 @@
                 <button type="button" class="pwdToggle"><i class="fa fa-eye" aria-hidden="true"></i></button>
             </div>
 
-            <button>Inscription</button>
+            <button class="mt-2">Inscription</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
