@@ -29,14 +29,14 @@ $(document).ready(function () {
       showError(loginUsername, "L'identifiant ne peut pas être vide");
       valid = false;
     } else {
-      showSuccess(loginUsername);
+      hideError(loginUsername);
     }
 
     if (loginPassword.val().trim().length == 0) {
       showError(loginPassword, "Le mot de passe ne peut pas être vide");
       valid = false;
     } else {
-      showSuccess(loginPassword);
+      hideError(loginPassword);
     }
     return valid;
   };
@@ -55,14 +55,14 @@ $(document).ready(function () {
       showError(signupLastname, "Le nom ne peut pas être vide");
       valid = false;
     } else {
-      showSuccess(signupLastname);
+      hideError(signupLastname);
     }
 
     if (signupFirstname.val().trim().length == 0) {
       showError(signupFirstname, "Le prénom ne peut pas être vide");
       valid = false;
     } else {
-      showSuccess(signupFirstname);
+      hideError(signupFirstname);
     }
     if (signupUsername.val().trim().length < 4) {
       showError(
@@ -71,7 +71,7 @@ $(document).ready(function () {
       );
       valid = false;
     } else {
-      showSuccess(signupUsername);
+      hideError(signupUsername);
     }
     if (signupPassword.val().trim().length < 6) {
       showError(
@@ -80,13 +80,13 @@ $(document).ready(function () {
       );
       valid = false;
     } else {
-      showSuccess(signupPassword);
+      hideError(signupPassword);
     }
     return valid;
   };
 
   /* ############################################################# */
-  /* ####################  INPUT ERROR SHOW  ##################### */
+  /* ####################  SHOW INPUT ERROR  ##################### */
   /* ############################################################# */
   var showError = function (input, message) {
     const alert_message = input.next();
@@ -94,9 +94,9 @@ $(document).ready(function () {
     alert_message.text(message);
   };
   /* ############################################################# */
-  /* ####################  INPUT ERROR HIDE  ##################### */
+  /* ####################  HIDE INPUT ERROR  ##################### */
   /* ############################################################# */
-  var showSuccess = function (input) {
+  var hideError = function (input) {
     const alert_message = input.next();
     alert_message.css("visibility", "hidden");
   };
