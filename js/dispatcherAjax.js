@@ -51,44 +51,44 @@ $(document).ready(function () {
   /* ############################################################# */
   /* ####################  NAVBAR RECHERCHER  #################### */
   /* ############################################################# */
-  $(document).on('click', "#rechercher-btn", (e) => {
+  $(document).on("click", "#rechercher-btn", (e) => {
     e.preventDefault();
     $.ajax({
-      url : "dispatcherAjax.php?action=accueil",
-      type : "POST",
-      success: function(response, status) {
+      url: "dispatcherAjax.php?action=accueil",
+      type: "POST",
+      success: function (response, status) {
         console.log(response);
         $("#page_maincontent").empty();
         $("#page_maincontent").html(response);
       },
-      error : function(jqXhr, textStatus, errorThrown) {
+      error: function (jqXhr, textStatus, errorThrown) {
         notif(
           "error",
           "Une erreur s'est produite. Veuillez réessayer plus tard"
         );
-      }
-    })
+      },
+    });
   });
   /* ############################################################# */
   /* ####################  NAVBAR PROPOSER  #################### */
   /* ############################################################# */
-  $(document).on('click', "#proposer-btn", (e) => {
+  $(document).on("click", "#proposer-btn", (e) => {
     e.preventDefault();
     $.ajax({
-      url : "dispatcherAjax.php?action=proposeVoyage",
-      type : "POST",
-      success: function(response, status) {
+      url: "dispatcherAjax.php?action=proposeVoyage",
+      type: "POST",
+      success: function (response, status) {
         console.log(response);
         $("#page_maincontent").empty();
         $("#page_maincontent").html(response);
       },
-      error : function(jqXhr, textStatus, errorThrown) {
+      error: function (jqXhr, textStatus, errorThrown) {
         notif(
           "error",
           "Une erreur s'est produite. Veuillez réessayer plus tard"
         );
-      }
-    })
+      },
+    });
   });
   /* ############################################################# */
   /* ####################  NAVBAR CONNEXION  ##################### */
@@ -248,5 +248,41 @@ $(document).ready(function () {
           );
         },
       });
+  });
+
+  /* ############################################################# */
+  /* #########################  PROPOSER  ######################## */
+  /* ############################################################# */
+  $(document).on("submit", "#proposeForm", function (e) {
+    var formData = $(this).serialize();
+    console.log(formData);
+    e.preventDefault();
+    $.ajax({
+      url: "dispatcherAjax.php?action=proposeVoyage",
+      type: "POST",
+      data: formData,
+      success: function (response, status) {
+        console.log(response);
+        if (response == 0) {
+          //notif("error", "L'identifiant ou le mot de passe est invalide");
+        } else if (response == 1) {
+          //notif("success", "Vous êtes maintenant connecté");
+          setTimeout(function () {
+            window.location.href = "index.php";
+          }, 2500);
+        } else {
+          notif(
+            "error",
+            "Une erreur s'est produite. Veuillez réessayer plus tard"
+          );
+        }
+      },
+      error: function (jqXhr, textStatus, errorThrown) {
+        notif(
+          "error",
+          "Une erreur s'est produite. Veuillez réessayer plus tard"
+        );
+      },
+    });
   });
 });
