@@ -48,7 +48,27 @@ $(document).ready(function () {
     });
   });
 
-  //
+  /* ############################################################# */
+  /* ####################  NAVBAR CONNEXION  ##################### */
+  /* ############################################################# */
+  $(document).on('click', "#rechercher-btn", (e) => {
+    e.preventDefault();
+    $.ajax({
+      url : "dispatcherAjax.php?action=accueil",
+      type : "POST",
+      success: function(response, status) {
+        console.log(response);
+        $("#page_maincontent").empty();
+        $("#page_maincontent").html(response);
+      },
+      error : function(jqXhr, textStatus, errorThrown) {
+        notif(
+          "error",
+          "Une erreur s'est produite. Veuillez réessayer plus tard"
+        );
+      }
+    })
+  });
   /* ############################################################# */
   /* ####################  NAVBAR CONNEXION  ##################### */
   /* ############################################################# */
@@ -125,7 +145,7 @@ $(document).ready(function () {
             /* $("#bandeau").removeClass("error").addClass("success");
           $("#bandeau .content").text("Vous êtes connecté");
           $("#bandeau").show().delay(4000).fadeOut(); */
-            notif("success", "Vous êtes connecté");
+            notif("success", "Vous êtes maintenant connecté");
             setTimeout(function () {
               window.location.href = "index.php";
             }, 2500);
@@ -155,7 +175,7 @@ $(document).ready(function () {
   /* #######################  DECONNEXION  ####################### */
   /* ############################################################# */
   $(document).on("click", "#deco", (e) => {
-    notif("success", "Vous êtes déconnecté");
+    notif("success", "Vous êtes maintenant déconnecté");
   });
 
   /* ############################################################# */
