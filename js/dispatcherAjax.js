@@ -49,12 +49,33 @@ $(document).ready(function () {
   });
 
   /* ############################################################# */
-  /* ####################  NAVBAR CONNEXION  ##################### */
+  /* ####################  NAVBAR RECHERCHER  #################### */
   /* ############################################################# */
   $(document).on('click', "#rechercher-btn", (e) => {
     e.preventDefault();
     $.ajax({
       url : "dispatcherAjax.php?action=accueil",
+      type : "POST",
+      success: function(response, status) {
+        console.log(response);
+        $("#page_maincontent").empty();
+        $("#page_maincontent").html(response);
+      },
+      error : function(jqXhr, textStatus, errorThrown) {
+        notif(
+          "error",
+          "Une erreur s'est produite. Veuillez réessayer plus tard"
+        );
+      }
+    })
+  });
+  /* ############################################################# */
+  /* ####################  NAVBAR PROPOSER  #################### */
+  /* ############################################################# */
+  $(document).on('click', "#proposer-btn", (e) => {
+    e.preventDefault();
+    $.ajax({
+      url : "dispatcherAjax.php?action=proposeVoyage",
       type : "POST",
       success: function(response, status) {
         console.log(response);
