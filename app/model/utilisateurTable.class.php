@@ -14,7 +14,7 @@ class utilisateurTable {
         return $user;
     }
 
-    public static function getUserByID($id) {
+    public static function getUserByIdentifiant($id) {
         $em = dbconnection::getInstance()->getEntityManager();
 
         $userRepository = $em->getRepository('utilisateur');
