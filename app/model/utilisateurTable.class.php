@@ -14,14 +14,22 @@ class utilisateurTable {
         return $user;
     }
 
-    public static function getUserByIdentifiant($id) {
+    public static function getUserByIdentifiant($identifiant) {
         $em = dbconnection::getInstance()->getEntityManager();
 
         $userRepository = $em->getRepository('utilisateur');
-        $user = $userRepository->findOneBy(array('identifiant' => $id));
+        $user = $userRepository->findOneBy(array('identifiant' => $identifiant));
         return $user;
     }
 
+    public static function getUserById($id) {
+        $em = dbconnection::getInstance()->getEntityManager();
+
+        $userRepository = $em->getRepository('utilisateur');
+        $user = $userRepository->findOneBy(array('id' => $id));
+        return $user;
+    }
+    
     public static function setUser($identifiant, $pass, $nom, $prenom) {
         $em = dbconnection::getInstance()->getEntityManager();
         $ut = new utilisateur();
