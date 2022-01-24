@@ -19,6 +19,13 @@ class voyageTable {
         return $voyage;
     }
 
+    public static function getVoaygeByConducteur($conducteur) {
+        $em = dbconnection::getInstance()->getEntityManager();
+        $voyageRepo = $em->getRepository('voyage');
+        $voyage = $voyageRepo->findBy(array('conducteur' => $conducteur));
+        return $voyage;
+    }
+
     public static function setVoyage($conducteur, $trajet, $prix, $nbPlace, $heureDepart, $contraintes) {
         $em = dbconnection::getInstance()->getEntityManager();
         $v = new voyage();
