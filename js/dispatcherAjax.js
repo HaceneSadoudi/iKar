@@ -31,8 +31,8 @@ $(document).ready(function () {
       data: formData,
       dataType: "text",
       success: function (code_html, statut) {
-        /* $("#searchResult").html(code_html);
-        $("#bandeau .content").text("Recherche Terminé");
+        $("#searchResult").html(code_html);
+        /*$("#bandeau .content").text("Recherche Terminé");
         $("#bandeau").show().delay(4000).animate({ opacity: 0 }); */
         notif("success", "Recherche Terminé");
       },
@@ -264,12 +264,12 @@ $(document).ready(function () {
       success: function (response, status) {
         console.log(response);
         if (response == 0) {
-          //notif("error", "L'identifiant ou le mot de passe est invalide");
+          notif("error", "Ce trajet n'est pas disponible");
         } else if (response == 1) {
-          //notif("success", "Vous êtes maintenant connecté");
+          notif("success", "Votre voyage a été publié");
           setTimeout(function () {
             window.location.href = "index.php";
-          }, 2500);
+          }, 3500);
         } else {
           notif(
             "error",
