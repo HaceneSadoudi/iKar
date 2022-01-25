@@ -24,7 +24,26 @@ class mainController {
 	public static function searchVoyage($request, $context) {
 		return context::SUCCESS;
 	}
-	
+
+	public static function proposeVoyage($request, $context) {
+		if (
+			isset($request['depart'])
+			&& isset($request['arrivee'])
+			&& isset($request['heureDepart'])
+			&& isset($request['prix'])
+			&& isset($request['nbPlace'])
+		) {
+			$trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
+			if ($trajet != NULL) {
+				$user = utilisateurTable::getUserById($context->getSessionAttribute('id'));
+				$v = voyageTable::setVoyage($user, $trajet, $request['prix'], $request['nbPlace'], $request['heureDepart'], $request['contraintes']);
+				echo 1;
+			} else echo 0;
+			return context::NONE;
+		}
+		return context::SUCCESS;
+	}
+
 	public static function connexion($request, $context) {
 
 		if (isset($request['lidentifiant']) && isset($request['lpass'])) {
