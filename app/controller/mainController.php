@@ -14,13 +14,17 @@ class mainController {
 	public static function rechercheVoyage($request, $context) {
 		$trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
 		if ($trajet == NULL) return context::ERROR;
-		$context->voyages = voyageTable::getVoyagesByTrajet($trajet);  
+		$context->voyages = voyageTable::getVoyagesByTrajet($trajet);
 		if ($context->voyages == false) {
 			return context::ERROR;
 		}
 		return context::SUCCESS;
 	}
 
+	public static function searchVoyage($request, $context) {
+		return context::SUCCESS;
+	}
+	
 	public static function connexion($request, $context) {
 
 		if (isset($request['lidentifiant']) && isset($request['lpass'])) {
@@ -56,7 +60,7 @@ class mainController {
 
 
 	public static function inscription($request, $context) {
-		$user = utilisateurTable::getUserByID($request['ridentifiant']);
+		$user = utilisateurTable::getUserByIdentifiant($request['ridentifiant']);
 		if ($user == NULL) {
 			$user = utilisateurTable::setUser(
 				$request['ridentifiant'],
