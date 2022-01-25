@@ -13,6 +13,36 @@ $(document).ready(function () {
   };
 
   /* ############################################################# */
+  /* ################  RECHERCHE VOYAGE ACCUEIL  ################# */
+  /* ############################################################# */
+  $("#page_maincontent").on('submit', '#hero_search_form', function(e) {
+    e.preventDefault();
+    let formData = $(this).serialize();
+    var depart = $(this).find('input[name=depart]').val();
+    var arrivee = $(this).find('input[name=arrivee]').val();
+    var nbPlaces = $(this).find('input[name=nbplaces]').val();
+    alert(depart + " " + arrivee +" "+ nbPlaces);
+    $.ajax({
+      url: "dispatcherAjax.php",
+      type: "POST",
+      data: formData,
+      dataType: "text",
+      success: function(response, status) {
+        $("#page_maincontent").empty();
+        $("#page_maincontent").html(response);
+        $("#rechercheVoyageForm input[name=depart]").val(depart);
+        $("#rechercheVoyageForm input[name=arrivee]").val(arrivee);
+        $("#rechercheVoyageForm input[name=nbplaces]").val(nbPlaces);
+        $("#rechercheVoyageForm").submit();
+      },
+      error : function(jqXhr, textStatus, errorThrown) {
+        
+      }
+    });
+
+  })
+
+  /* ############################################################# */
   /* ####################  RECHERCHE VOYAGE  ##################### */
   /* ############################################################# */
   $("#page_maincontent").on("submit", "#rechercheVoyageForm", function (e) {
@@ -31,7 +61,7 @@ $(document).ready(function () {
       data: formData,
       dataType: "text",
       success: function (code_html, statut) {
-        $("#searchResult").html(code_html);
+        $("#voyage_search_result").html(code_html);
         /*$("#bandeau .content").text("Recherche Terminé");
         $("#bandeau").show().delay(4000).animate({ opacity: 0 }); */
         notif("success", "Recherche Terminé");
