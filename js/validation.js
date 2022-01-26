@@ -15,3 +15,8 @@ export function validateLength(data, min=1, max=Number.MAX_SAFE_INTEGER) {
     return true;
 }
 
+export function validatePhone(data) {
+    let regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    return regex.test(data.trime());
+}
+
