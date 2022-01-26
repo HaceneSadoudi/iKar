@@ -20,3 +20,6 @@ export function validatePhone(data) {
     return regex.test(data.trime());
 }
 
+export function validateNumber(data) {
+    return !isNaN(data.trim());
+}
