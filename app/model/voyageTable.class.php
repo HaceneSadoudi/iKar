@@ -39,4 +39,15 @@ class voyageTable {
         $em->persist($v);
         $em->flush();
     }
+
+    public static function updateVoyage($voyage, $reserve) {
+        $em = dbconnection::getInstance()->getEntityManager();
+        $v = $em->getRepository('voyage')->findOneBy($voyage);
+        if($v = NULL) {
+            echo 0;
+        }
+        $v->nbPlace -= $reserve;
+        echo 1;
+        $em->flush();
+    }
 }
