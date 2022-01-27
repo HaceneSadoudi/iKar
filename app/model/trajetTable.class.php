@@ -11,4 +11,15 @@ class trajetTable {
         $trajet = $trajetRepo->findOneBy(array('depart' => $depart, 'arrivee' => $arrivee));
         return $trajet;
     }
+
+    public static function setTrajet($depart, $arrivee, $distance) {
+        $em = dbconnection::getInstance()->getEntityManager();
+        $t = new trajet();
+        $t->depart = $depart;
+        $t->arrivee = $arrivee;
+        $t->distance = $distance;
+
+        $em->persist($t);
+        $em->flush();
+    }
 }
