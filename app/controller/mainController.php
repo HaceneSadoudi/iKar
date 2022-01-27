@@ -79,21 +79,30 @@ class mainController {
 
 
 	public static function inscription($request, $context) {
-		$user = utilisateurTable::getUserByIdentifiant($request['ridentifiant']);
-		if ($user == NULL) {
-			$user = utilisateurTable::setUser(
-				$request['ridentifiant'],
-				$request['rpass'],
-				$request['rnom'],
-				$request['rprenom']
-			);
-			echo 1;
-			$request['lidentifiant'] = $request['ridentifiant'];
-			$request['lpass'] = $request['rpass'];
-			mainController::connexion($request, $context);
-		} else {
-			echo 0;
+
+		if (
+			isset($request['ridentifiant']) && 
+			isset($request['rpass']) &&
+			isset($request['rprenom']) &&
+			isset($request['rnom'])
+		) {
+			$user = utilisateurTable::getUserByIdentifiant($request['ridentifiant']);
+			if ($user == NULL) {
+				$user = utilisateurTable::setUser(
+					$request['ridentifiant'],
+					$request['rpass'],
+					$request['rnom'],
+					$request['rprenom']
+				);
+				echo 1;
+				$request['lidentifiant'] = $request['ridentifiant'];
+				$request['lpass'] = $request['rpass'];
+				mainController::connexion($request, $context);
+			} else {
+				echo 0;
+			}
+			return context::NONE;
 		}
-		return context::NONE;
+		return context::SUCCESS;
 	}
 }
