@@ -6,7 +6,9 @@
   "directories": {
     "lib": "lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "animate.css": "^4.1.1"
+  },
   "devDependencies": {
     "node-sass": "^7.0.1"
   },
