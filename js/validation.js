@@ -39,3 +39,8 @@ export function containsWhitespace(data) {
     return regex.test(data);
 }
 
+export function containsUppercase(data) {
+    const regex = /^(?=.*[A-Z])/;
+    return regex.test(data);
+}
+
