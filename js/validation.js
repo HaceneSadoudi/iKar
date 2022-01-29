@@ -23,3 +23,9 @@ export function validatePhone(data) {
 export function validateNumber(data) {
     return !isNaN(data.trim());
 }
+
+export function validateName(data) {
+    let regex = /^[a-zA-Z]{2,}$/;
+    return regex.test(data);
+}
+
