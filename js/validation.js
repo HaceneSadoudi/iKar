@@ -54,3 +54,7 @@ export function containsDigit(data) {
     return regex.test(data);
 }
 
+export function containsSymbol(data) {
+    const regex = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹])/;
+    return regex.test(data);
+}
