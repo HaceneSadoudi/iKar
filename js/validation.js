@@ -29,3 +29,8 @@ export function validateName(data) {
     return regex.test(data);
 }
 
+export function validateUsername(data) {
+    const regex = /^(?:[A-Za-z][A-Za-z0-9]*){4,}$/;
+    return regex.test(data);
+}
+
