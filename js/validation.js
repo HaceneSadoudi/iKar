@@ -44,3 +44,8 @@ export function containsUppercase(data) {
     return regex.test(data);
 }
 
+export function containsLowercase(data) {
+    const regex = /^(?=.*[a-z])/;
+    return regex.test(data);
+}
+
