@@ -34,3 +34,8 @@ export function validateUsername(data) {
     return regex.test(data);
 }
 
+export function containsWhitespace(data) {
+    const regex = /^(?=.*\s)/;
+    return regex.test(data);
+}
+
