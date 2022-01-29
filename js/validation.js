@@ -49,3 +49,8 @@ export function containsLowercase(data) {
     return regex.test(data);
 }
 
+export function containsDigit(data) {
+    const regex = /^(?=.*[0-9])/;
+    return regex.test(data);
+}
+
