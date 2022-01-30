@@ -245,6 +245,52 @@ $(document).ready(function () {
   });
 
   /* ############################################################# */
+  /* #################  NEXT STEP BUTTON EVENT  ################## */
+  /* ############################################################# */
+  $(document).on("click", ".next-step-btn", function (e, isLastInputInStep) {
+    const nextBtn = $(e.currentTarget);
+    const currentStep = nextBtn.parent().parent();
+    const currentStepIndex = currentStep.index() + 1;
+    const dots = currentStep.parent().parent().find(".progress-bar__dot");
+
+    // First step (lastname + firstname)
+    if (currentStepIndex == 1) {
+      const firstNameInput = currentStep.find("input[name=prenom]");
+      const lastNameInput = currentStep.find("input[name=nom]");
+      const firstName = firstNameInput.val().trim();
+      const lastName = lastNameInput.val().trim();
+      if (
+        validation.validateName(firstName) &&
+        validation.validateName(lastName)
+      ) {
+        ShowSuccess(lastNameInput);
+        ShowSuccess(firstNameInput);
+        goToNextStep(currentStepIndex, currentStep, dots);
+      } else if (!validation.validateName(lastName)) {
+        lastNameInput.parent().addClass("animate__animated animate__shakeX");
+        showError(
+          lastNameInput,
+          "Le nom doit contenir au minimum 2 caractères alphabétiques"
+        );
+      } else if (!validation.validateName(firstName)) {
+        if (isLastInputInStep == 0) {
+          // the keyup event was in lastNameInput
+          firstNameInput.focus();
+          ShowSuccess(lastNameInput);
+        } else {
+          // the keyup event was in firstNameInput
+          firstNameInput.parent().addClass("animate__animated animate__shakeX");
+          ShowSuccess(lastNameInput);
+          showError(
+            firstNameInput,
+            "Le nom doit contenir au minimum 2 caractères alphabétiques"
+          );
+        }
+      }
+    }
+  });
+  });
+  /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
   /* ############################################################# */
   $("#page_maincontent").on("submit", "#inscriptionForm", (e) => {
