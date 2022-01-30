@@ -288,6 +288,22 @@ $(document).ready(function () {
         }
       }
     }
+
+    // Second step (Username)
+    if (currentStepIndex == 2) {
+      const identifiantInput = currentStep.find("input[name=identifiant]");
+      const identifiant = identifiantInput.val().trim();
+      if (validation.validateUsername(identifiant)) {
+        ShowSuccess(identifiantInput);
+        goToNextStep(currentStepIndex, currentStep, dots);
+      } else {
+        identifiantInput.parent().addClass("animate__animated animate__shakeX");
+        showError(
+          identifiantInput,
+          "l'identifiant doit contenir au minimum 4 caractères alphanumériques et commence par une lettre"
+        );
+      }
+    }
   });
   });
   /* ############################################################# */
