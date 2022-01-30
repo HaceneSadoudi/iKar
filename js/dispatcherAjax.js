@@ -318,6 +318,21 @@ $(document).ready(function () {
       "animate__animated animate__shakeX animate__fadeInLeft animate__fadeInRight"
     );
   });
+
+  /* ############################################################# */
+  /* #####################  GO TO NEXT STEP  ##################### */
+  /* ############################################################# */
+  const goToNextStep = function (index, currentStep, dots) {
+    dots
+      .eq(index - 1)
+      .removeClass("current")
+      .addClass("checked");
+    dots.eq(index).addClass("current");
+    currentStep
+      .removeClass("active")
+      .next()
+      .addClass("active animate__animated animate__fadeInRight");
+  };
   /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
   /* ############################################################# */
