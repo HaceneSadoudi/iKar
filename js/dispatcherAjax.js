@@ -305,6 +305,18 @@ $(document).ready(function () {
       }
     }
   });
+  // FIXME Prevent signup/signin when user is logged                                                                                                                  
+  /* ############################################################# */
+  /* ##########  REMOVE ANIMATION CLASSES AFTER FINISH  ########## */
+  /* ############################################################# */
+  $(document).on("animationend", ".animate__animated", function () {
+    // the animation is on the step element
+    if($(this).hasClass("step")) {
+      $(this).find("input").eq(0).focus();
+    }
+    $(this).removeClass(
+      "animate__animated animate__shakeX animate__fadeInLeft animate__fadeInRight"
+    );
   });
   /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
