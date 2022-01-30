@@ -230,6 +230,21 @@ $(document).ready(function () {
   });
 
   /* ############################################################# */
+  /* ###############  ENTER EVENT (REGISTER FORM)  ############### */
+  /* ############################################################# */
+  $(document).on("keyup", "#register-form", function (e) {
+    const isLastInputInStep = $(e.target)
+      .parents(".input-group")
+      .next()
+      .find("input[type=button]").length;
+    if (e.which == 13)
+      $(e.target)
+        .parents(".step")
+        .find("input[type=button]")
+        .trigger("click", [isLastInputInStep]);
+  });
+
+  /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
   /* ############################################################# */
   $("#page_maincontent").on("submit", "#inscriptionForm", (e) => {
