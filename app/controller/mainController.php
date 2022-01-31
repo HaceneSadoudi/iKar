@@ -34,6 +34,7 @@ class mainController {
 			&& isset($request['nbPlace'])
 		) {
 			$trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
+			// TODO - if(heure & prix & place are not given , they will be replaced by blank text and then doctrine insert blank text in place of number)
 			if ($trajet != NULL) {
 				$user = utilisateurTable::getUserById($context->getSessionAttribute('id'));
 				$v = voyageTable::setVoyage($user, $trajet, $request['prix'], $request['nbPlace'], $request['heureDepart'], $request['contraintes']);
@@ -46,9 +47,9 @@ class mainController {
 
 	public static function connexion($request, $context) {
 
-		if (isset($request['lidentifiant']) && isset($request['lpass'])) {
-			$identifiant = $request['lidentifiant'];
-			$pass = $request['lpass'];
+		if (isset($request['identifiant']) && isset($request['pass'])) {
+			$identifiant = $request['identifiant'];
+			$pass = $request['pass'];
 			if (!empty($identifiant) && !empty($pass)) {
 				$exist = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
 				if ($exist) {
@@ -81,22 +82,22 @@ class mainController {
 	public static function inscription($request, $context) {
 
 		if (
-			isset($request['ridentifiant']) && 
-			isset($request['rpass']) &&
-			isset($request['rprenom']) &&
-			isset($request['rnom'])
+			isset($request['identifiant']) && 
+			isset($request['pass']) &&
+			isset($request['prenom']) &&
+			isset($request['nom'])
 		) {
-			$user = utilisateurTable::getUserByIdentifiant($request['ridentifiant']);
+			$user = utilisateurTable::getUserByIdentifiant($request['identifiant']);
 			if ($user == NULL) {
 				$user = utilisateurTable::setUser(
-					$request['ridentifiant'],
-					$request['rpass'],
-					$request['rnom'],
-					$request['rprenom']
+					$request['identifiant'],
+					$request['pass'],
+					$request['nom'],
+					$request['prenom']
 				);
 				echo 1;
-				$request['lidentifiant'] = $request['ridentifiant'];
-				$request['lpass'] = $request['rpass'];
+				$request['lidentifiant'] = $request['identifiant'];
+				$request['lpass'] = $request['pass'];
 				mainController::connexion($request, $context);
 			} else {
 				echo 0;
