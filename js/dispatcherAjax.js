@@ -425,38 +425,26 @@ $(document).ready(function () {
   /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
   /* ############################################################# */
-  $("#page_maincontent").on("submit", "#inscriptionForm", (e) => {
-    e.preventDefault();
-    var fdata = $("#inscriptionForm").serialize();
-    if (signUpValidation())
+  $("#page_maincontent").on("click", "#register-form #submit", (e) => {
+    const passwordInput = $(e.target).parents(".step").find("input[name=pass]");
+    const password = passwordInput.val().trim();
+    if (validation.validatePassword(password)) {
+      ShowSuccess(passwordInput);
+      const formData = $("#register-form").serialize();
       $.ajax({
-        // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
         url: "dispatcherAjax.php?action=inscription",
         type: "POST",
-        data: fdata,
+        data: formData,
         dataType: "text",
-        success: function (response, statut) {
+        success: function (response, status) {
           if (response == 0) {
-            /* $("#bandeau").removeClass("success").addClass("error");
-          $("#bandeau .content").text(
-            "L'identifiant de l'utilisateur existe déjà"
-          );
-          $("#bandeau").show().delay(4000).fadeOut(); */
             notif("error", "L'identifiant de l'utilisateur existe déjà");
           } else if (response == 11 || response == 10) {
-            /* $("#bandeau").removeClass("error").addClass("success");
-          $("#bandeau .content").text("Votre compte a été créé avec succès");
-          $("#bandeau").show().delay(4000).fadeOut(); */
             notif("success", "Votre compte a été créé avec succès");
             setTimeout(function () {
               window.location.href = "index.php";
             }, 2500);
           } else {
-            /* $("#bandeau").removeClass("success").addClass("error");
-          $("#bandeau .content").text(
-            "Une erreur s'est produite. Veuillez réessayer plus tard"
-          );
-          $("#bandeau").show().delay(4000).fadeOut(); */
             notif(
               "error",
               "Une erreur s'est produite. Veuillez réessayer plus tard"
@@ -471,6 +459,10 @@ $(document).ready(function () {
           );
         },
       });
+    } else {
+      passwordInput.parent().addClass("animate__animated animate__shakeX");
+      showError(passwordInput);
+    }
   });
 
   /* ############################################################# */
