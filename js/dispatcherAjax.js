@@ -333,6 +333,95 @@ $(document).ready(function () {
       .next()
       .addClass("active animate__animated animate__fadeInRight");
   };
+
+  /* ############################################################# */
+  /* ###################  PASSWORD VALIDATION  ################### */
+  /* ############################################################# */
+  $(document).on("keyup", "#register-form input[name=pass]", function (e) {
+    e.preventDefault();
+    const password = $(this).val();
+    const constraint_item = $(this)
+      .parents(".step")
+      .find(".password-constraints__item");
+    const constraint_item_icon = constraint_item.find(".fa");
+    let allChecked = true;
+    if (validation.validateLength(password, 8, 50)) {
+      constraint_item.eq(0).addClass("checked");
+      constraint_item_icon
+        .eq(0)
+        .removeClass("fa-circle-o")
+        .addClass("fa-check-circle-o");
+    } else {
+      constraint_item.eq(0).removeClass("checked");
+      constraint_item_icon
+        .eq(0)
+        .removeClass("fa-check-circle-o")
+        .addClass("fa-circle-o");
+      allChecked = false;
+    }
+    if (validation.containsLowercase(password)) {
+      constraint_item.eq(1).addClass("checked");
+      constraint_item_icon
+        .eq(1)
+        .removeClass("fa-circle-o")
+        .addClass("fa-check-circle-o");
+    } else {
+      constraint_item.eq(1).removeClass("checked");
+      constraint_item_icon
+        .eq(1)
+        .removeClass("fa-check-circle-o")
+        .addClass("fa-circle-o");
+      allChecked = false;
+    }
+    if (validation.containsUppercase(password)) {
+      constraint_item.eq(2).addClass("checked");
+      constraint_item_icon
+        .eq(2)
+        .removeClass("fa-circle-o")
+        .addClass("fa-check-circle-o");
+    } else {
+      constraint_item.eq(2).removeClass("checked");
+      constraint_item_icon
+        .eq(2)
+        .removeClass("fa-check-circle-o")
+        .addClass("fa-circle-o");
+      allChecked = false;
+    }
+    if (validation.containsDigit(password)) {
+      constraint_item.eq(3).addClass("checked");
+      constraint_item_icon
+        .eq(3)
+        .removeClass("fa-circle-o")
+        .addClass("fa-check-circle-o");
+    } else {
+      constraint_item.eq(3).removeClass("checked");
+      constraint_item_icon
+        .eq(3)
+        .removeClass("fa-check-circle-o")
+        .addClass("fa-circle-o");
+      allChecked = false;
+    }
+    if (validation.containsSymbol(password)) {
+      constraint_item.eq(4).addClass("checked");
+      constraint_item_icon
+        .eq(4)
+        .removeClass("fa-circle-o")
+        .addClass("fa-check-circle-o");
+    } else {
+      constraint_item.eq(4).removeClass("checked");
+      constraint_item_icon
+        .eq(4)
+        .removeClass("fa-check-circle-o")
+        .addClass("fa-circle-o");
+      allChecked = false;
+    }
+    if (allChecked) {
+      ShowSuccess($(this));
+    } else {
+      $(this).parents(".input-group").removeClass("success");
+    }
+  });
+  
   /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
   /* ############################################################# */
