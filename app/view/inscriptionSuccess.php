@@ -55,7 +55,29 @@
                             <small class="alert-message">Error</small>
                         </div>
                         <div class="input-group">
-                            <button class="button next-step-btn" type="submit">Créer mon compte</button>
+                            <ul class="password-constraints">
+                                <li class="password-constraints__item">
+                                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                                    <span>Entre 8 et 50 caractères</span>
+                                </li>
+                                <li class="password-constraints__item">
+                                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                                    <span>Une minuscule au moins</span>
+                                </li>
+                                <li class="password-constraints__item">
+                                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                                    <span>Une majuscule au moins</span>
+                                </li>
+                                <li class="password-constraints__item">
+                                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                                    <span>Un chiffre au moins</span>
+                                </li>
+                                <li class="password-constraints__item">
+                                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                                    <span>Un caractère spécial au moins (@&/!*#...)</span>
+                                </li>
+                            </ul>
+                        </div>
                         </div>
                     </div>
                 </form>
