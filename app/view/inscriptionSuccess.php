@@ -29,7 +29,7 @@
                             <small class="alert-message">Error</small>
                         </div>
                         <div class="input-group">
-                            <button class="button next-step-btn">Suivant</button>
+                            <input class="button next-step-btn" type="button" value="Suivant">
                         </div>
                     </div>
                     <div class="step animate__animated">
@@ -42,7 +42,7 @@
                             <small class="alert-message">Error</small>
                         </div>
                         <div class="input-group">
-                            <button class="button next-step-btn">Suivant</button>
+                            <input class="button next-step-btn" type="button" value="Suivant">
                         </div>
                     </div>
                     <div class="step animate__animated">
