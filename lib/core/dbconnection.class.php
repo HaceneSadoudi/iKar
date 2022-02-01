@@ -1,8 +1,8 @@
 <?php
 
-define('HOST', 'pedago01c.univ-avignon.fr');
-define('USER', 'uapv2101672');
-define('PASS', 'vazQ7D');
+define('HOST', '127.0.0.1');
+define('USER', 'postgres');
+define('PASS', '0000');
 define('DB', 'etd');
 
 use Doctrine\ORM\Tools\Setup;
