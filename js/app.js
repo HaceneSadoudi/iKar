@@ -32,18 +32,28 @@ $(document).ready(function () {
       hideError(loginUsername);
     }
 
-    if (loginPassword.val().trim().length == 0) {
-      showError(loginPassword, "Le mot de passe ne peut pas être vide");
-      valid = false;
-    } else {
-      hideError(loginPassword);
+$(document).on("click", ".progress-bar__dot", function (e) {
+  const targetStepIndex = $(this).index(".progress-bar__dot");
+  const targetStep = $("#register-form .step").eq(targetStepIndex);
+  const currentStep = $("#register-form .step.active");
+  const currentStepIndex = currentStep.index();
+  const dots = $(this).parent().find(".progress-bar__dot");
+  console.log("[C:" + currentStepIndex + "],[T:" + targetStepIndex+"]");
+  // Going backward
+  for (let i = currentStepIndex; i >= targetStepIndex; i--) {
+    if (i == currentStepIndex && currentStepIndex != targetStepIndex) {
+      currentStep.removeClass("active");
+      targetStep.addClass("active");
+      //currentStep.removeClass("animate__fadeInLeft");
+      targetStep.addClass("animate__animated animate__fadeInLeft");
+      dots.eq(i).removeClass("current");
+    }else if(i == targetStepIndex && currentStepIndex != targetStepIndex) {
+      dots.eq(i).removeClass("checked").addClass("current");
+    }else {
+      dots.eq(i).removeClass("checked");
     }
-    return valid;
-  };
-
-  /* ############################################################# */
-  /* ###################  SIGN-UP VALIDATION  #################### */
-  /* ############################################################# */
+  }
+});
   signUpValidation = function () {
     let signupLastname = $("#inscriptionForm input[name=rnom]"),
       signupFirstname = $("#inscriptionForm input[name=rprenom]"),
