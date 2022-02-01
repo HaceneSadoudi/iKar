@@ -11,7 +11,7 @@
                 </ul>
                 <h1 class="title">Création de votre compte</h1>
                 <form id="register-form" class="">
-                    <div class="step animate__animated active">
+                    <div class="step active">
                         <div class="input-group">
                             <div class="input-group-row">
                                 <input name="nom" type="text" placeholder="Nom" />
@@ -32,7 +32,7 @@
                             <input class="button next-step-btn" type="button" value="Suivant">
                         </div>
                     </div>
-                    <div class="step animate__animated">
+                    <div class="step">
                         <div class="input-group">
                             <div class="input-group-row">
                                 <input name="identifiant" type="text" placeholder="Identifiant" />
@@ -45,7 +45,7 @@
                             <input class="button next-step-btn" type="button" value="Suivant">
                         </div>
                     </div>
-                    <div class="step animate__animated">
+                    <div class="step">
                         <div class="input-group">
                             <div class="input-group-row">
                                 <input name="pass" type="password" placeholder="Mot de passe" />
