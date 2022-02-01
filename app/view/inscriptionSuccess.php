@@ -14,7 +14,7 @@
                     <div class="step active">
                         <div class="input-group">
                             <div class="input-group-row">
-                                <input name="nom" type="text" placeholder="Nom" />
+                                <input name="nom" type="text" placeholder="Nom" autofocus />
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </div>
@@ -22,7 +22,7 @@
                         </div>
                         <div class="input-group">
                             <div class="input-group-row">
-                                <input name="prenom" class="" type="text" placeholder="Prénom" />
+                                <input name="prenom" type="text" placeholder="Prénom" />
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </div>
@@ -78,6 +78,8 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="input-group">
+                            <input class="button" id="submit" type="button" value="Créer mon compte">
                         </div>
                     </div>
                 </form>
