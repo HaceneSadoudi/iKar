@@ -96,8 +96,8 @@ class mainController {
 					$request['prenom']
 				);
 				echo 1;
-				$request['lidentifiant'] = $request['identifiant'];
-				$request['lpass'] = $request['pass'];
+				$request['identifiant'] = $request['identifiant'];
+				$request['pass'] = $request['pass'];
 				mainController::connexion($request, $context);
 			} else {
 				echo 0;
