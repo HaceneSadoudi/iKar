@@ -108,7 +108,7 @@ class mainController {
 	}
 
 	public function encrypt_password($pass) {		
-		$salt = md5(uniqid(rand(), TRUE));
-		return hash("sha512", $pass, substr($salt,0,4));
+		$salt = substr(md5(uniqid(rand(), TRUE)),0,4);
+		return hash("sha512", $pass.$salt);
 	}
 }
