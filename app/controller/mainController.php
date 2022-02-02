@@ -106,4 +106,9 @@ class mainController {
 		}
 		return context::SUCCESS;
 	}
+
+	public function encrypt_password($pass) {		
+		$salt = md5(uniqid(rand(), TRUE));
+		return hash("sha512", $pass, substr($salt,0,4));
+	}
 }
