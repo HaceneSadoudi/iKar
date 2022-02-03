@@ -143,6 +143,18 @@ $(document).ready(function () {
       },
     });
   });
+  /* ############################################################# */
+  /* ####################  NAVBAR INSCRIPTION  ##################### */
+  /* ############################################################# */
+  $(document).on("click", ".inscription-btn", function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: "dispatcherAjax.php?action=inscription",
+      type: "POST",
+      dataType: "text",
+      success: function (code_html, statut) {
+        $("#page_maincontent").empty();
+        $("#page_maincontent").html(code_html);
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
