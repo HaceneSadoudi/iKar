@@ -1,5 +1,5 @@
 export function validatePassword(data) {
-    let regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    let regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
     return regex.test(data.trim());
 };
 
@@ -30,7 +30,7 @@ export function validateName(data) {
 }
 
 export function validateUsername(data) {
-    const regex = /^(?:[A-Za-z])[A-Za-z0-9]{3,}$/;
+    const regex = /^(?:[A-Za-z])[A-Za-z0-9]{3,20}$/;
     return regex.test(data);
 }
 
