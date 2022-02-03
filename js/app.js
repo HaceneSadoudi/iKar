@@ -96,13 +96,17 @@ $(document).on("click", ".progress-bar__dot", function (e) {
   };
 
   /* ############################################################# */
-  /* ####################  SHOW INPUT ERROR  ##################### */
+  /* ####################### FIXED NAVBAR ######################## */
   /* ############################################################# */
-  var showError = function (input, message) {
-    const alert_message = input.next();
-    alert_message.css("visibility", "visible");
-    alert_message.text(message);
-  };
+  $(window).bind("scroll", function () {
+    const $top_nav = $(".top-nav").outerHeight(true) + 10;
+    console.log($top_nav);
+    if ($(this).scrollTop() > $top_nav) {
+      $(".main-nav").addClass("fixed");
+    } else {
+      $(".main-nav").removeClass("fixed");
+    }
+  });
   /* ############################################################# */
   /* ####################  HIDE INPUT ERROR  ##################### */
   /* ############################################################# */
