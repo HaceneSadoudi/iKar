@@ -124,42 +124,25 @@ $(document).ready(function () {
   /* ############################################################# */
   /* ####################  NAVBAR CONNEXION  ##################### */
   /* ############################################################# */
-  $(document).on("click", "#connexion-btn", () => {
+  $(document).on("click", ".connexion-btn", () => {
     $.ajax({
       // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
       url: "dispatcherAjax.php?action=connexion",
       type: "POST",
       dataType: "text",
-      success: function (code_html, statut) {
-        // code_html contient le HTML renvoyé
+      success: function (response, statut) {
         $("#page_maincontent").empty();
-        $("#page_maincontent").html(code_html);
-        gapi.signin2.render("g-sign-in", {
-          scope: "profile email openid",
-          width: 200,
-          height: 40,
-          longtitle: true,
-          theme: "dark",
-          onsuccess: function (googleUser) {
-            // Called when the user signs in
-          },
-          onfailure: function (e) {
-            console.warn("Google Sign-In failure: " + e.error);
-          },
-        });
-        gapi.signin2.render("g-sign-up", {
-          scope: "profile email openid",
-          width: 200,
-          height: 40,
-          longtitle: true,
-          theme: "dark",
-          onsuccess: function (googleUser) {
-            // Called when the user signs in
-          },
-          onfailure: function (e) {
-            console.warn("Google Sign-In failure: " + e.error);
-          },
-        });
+        $("#page_maincontent").html(response);
+      },
+      error: function (jqXhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+        notif(
+          "error",
+          "Une erreur s'est produite. Veuillez réessayer plus tard"
+        );
+      },
+    });
+  });
       },
       error: function (jqXhr, textStatus, errorThrown) {
         console.log(errorThrown);
