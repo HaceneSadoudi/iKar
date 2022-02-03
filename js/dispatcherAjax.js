@@ -169,18 +169,10 @@ $(document).ready(function () {
   /* ############################################################# */
   /* #######################  CONNEXION  ######################### */
   /* ############################################################# */
-  $("#page_maincontent").on("submit", "#connexionForm", (e) => {
+  $("#page_maincontent").on("submit", "#login-form", function (e) {
     e.preventDefault();
 
-    var formData = $("#connexionForm").serialize();
-    if (loginValidation())
-      $.ajax({
-        // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
-        url: "dispatcherAjax.php?action=connexion",
-        type: "POST",
-        data: formData,
-        dataType: "text",
-        success: function (response, statut) {
+    var formData = $(this).serialize();
           if (response == 0) {
             /*  $("#bandeau").removeClass("success").addClass("error");
           $("#bandeau .content").text(
@@ -221,7 +213,7 @@ $(document).ready(function () {
   /* ############################################################# */
   /* #######################  DECONNEXION  ####################### */
   /* ############################################################# */
-  $(document).on("click", "#deco", (e) => {
+  $(document).on("click", "#disconnect", (e) => {
     notif("success", "Vous êtes maintenant déconnecté");
   });
 
@@ -307,7 +299,7 @@ $(document).ready(function () {
   /* ############################################################# */
   $(document).on("animationend", ".animate__animated", function () {
     // the animation is on the step element
-    if($(this).hasClass("step")) {
+    if ($(this).hasClass("step")) {
       $(this).find("input").eq(0).focus();
     }
     $(this).removeClass(
