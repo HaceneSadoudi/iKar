@@ -172,8 +172,12 @@ $(document).ready(function () {
   /* ############################################################# */
   $("#page_maincontent").on("submit", "#login-form", function (e) {
     e.preventDefault();
-
-    var formData = $(this).serialize();
+    const usernameInput = $(this).find("input[name=identifiant]");
+    const passwordInput = $(this).find("input[name=pass]");
+    // Sanitizing & Cleaning inputs
+    const maxLength = 20;
+    const username = usernameInput.val().trim().substr(0, maxLength);
+    const password = passwordInput.val().trim().substr(0, maxLength);
           if (response == 0) {
             /*  $("#bandeau").removeClass("success").addClass("error");
           $("#bandeau .content").text(
