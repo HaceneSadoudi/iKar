@@ -178,6 +178,16 @@ $(document).ready(function () {
     const maxLength = 20;
     const username = usernameInput.val().trim().substr(0, maxLength);
     const password = passwordInput.val().trim().substr(0, maxLength);
+    // Validating inputs
+    if (!v.validateLength(username, 1)) {
+      usernameInput.parent().addClass("animate__animated animate__shakeX");
+      showError(usernameInput, "Identifiant incorrect");
+    } else hideError(usernameInput);
+    if (!v.validateLength(password, 1)) {
+      passwordInput.parent().addClass("animate__animated animate__shakeX");
+      showError(passwordInput, "Mot de passe incorrect");
+    } else hideError(passwordInput);
+    if (v.validateLength(username, 1) && v.validateLength(password, 1))
           if (response == 0) {
             /*  $("#bandeau").removeClass("success").addClass("error");
           $("#bandeau .content").text(
