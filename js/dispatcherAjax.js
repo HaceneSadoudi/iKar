@@ -333,7 +333,7 @@ $(document).ready(function () {
   /* ############################################################# */
   $(document).on("keyup", "#register-form input[name=pass]", function (e) {
     e.preventDefault();
-    const password = $(this).val();
+    const password = $(this).val().trim();
     const constraint_item = $(this)
       .parents(".step")
       .find(".password-constraints__item");
@@ -421,6 +421,11 @@ $(document).ready(function () {
   /* ############################################################# */
   $("#page_maincontent").on("click", "#register-form #submit", (e) => {
     const passwordInput = $(e.target).parents(".step").find("input[name=pass]");
+    const form = $("#register-form");
+    // Clean inputs
+    const lastname = form.find("input[name=nom]").val().trim();
+    const firstname = form.find("input[name=prenom]").val().trim();
+    const username = form.find("input[name=identifiant]").val().trim();
     const password = passwordInput.val().trim();
     if (v.validatePassword(password)) {
       showSuccess(passwordInput);
