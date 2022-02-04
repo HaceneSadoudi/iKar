@@ -1,3 +1,4 @@
+import * as v from "./validation.js";
 $(document).ready(function () {
   $("form").attr("autocomplete", "off");
   /* ############################################################# */
@@ -247,20 +248,15 @@ $(document).ready(function () {
       const lastNameInput = currentStep.find("input[name=nom]");
       const firstName = firstNameInput.val().trim();
       const lastName = lastNameInput.val().trim();
-      if (
-        validation.validateName(firstName) &&
-        validation.validateName(lastName)
-      ) {
-        ShowSuccess(lastNameInput);
-        ShowSuccess(firstNameInput);
+      if (v.validateName(firstName) && v.validateName(lastName)) {
         goToNextStep(currentStepIndex, currentStep, dots);
-      } else if (!validation.validateName(lastName)) {
+      } else if (!v.validateName(lastName)) {
         lastNameInput.parent().addClass("animate__animated animate__shakeX");
         showError(
           lastNameInput,
           "Le nom doit contenir au minimum 2 caractères alphabétiques"
         );
-      } else if (!validation.validateName(firstName)) {
+      } else if (!v.validateName(firstName)) {
         if (isLastInputInStep == 0) {
           // the keyup event was in lastNameInput
           firstNameInput.focus();
@@ -281,8 +277,7 @@ $(document).ready(function () {
     if (currentStepIndex == 2) {
       const identifiantInput = currentStep.find("input[name=identifiant]");
       const identifiant = identifiantInput.val().trim();
-      if (validation.validateUsername(identifiant)) {
-        ShowSuccess(identifiantInput);
+      if (v.validateUsername(identifiant)) {
         goToNextStep(currentStepIndex, currentStep, dots);
       } else {
         identifiantInput.parent().addClass("animate__animated animate__shakeX");
@@ -333,7 +328,7 @@ $(document).ready(function () {
       .find(".password-constraints__item");
     const constraint_item_icon = constraint_item.find(".fa");
     let allChecked = true;
-    if (validation.validateLength(password, 8, 50)) {
+    if (v.validateLength(password, 8, 20)) {
       constraint_item.eq(0).addClass("checked");
       constraint_item_icon
         .eq(0)
@@ -347,7 +342,7 @@ $(document).ready(function () {
         .addClass("fa-circle-o");
       allChecked = false;
     }
-    if (validation.containsLowercase(password)) {
+    if (v.containsLowercase(password)) {
       constraint_item.eq(1).addClass("checked");
       constraint_item_icon
         .eq(1)
@@ -361,7 +356,7 @@ $(document).ready(function () {
         .addClass("fa-circle-o");
       allChecked = false;
     }
-    if (validation.containsUppercase(password)) {
+    if (v.containsUppercase(password)) {
       constraint_item.eq(2).addClass("checked");
       constraint_item_icon
         .eq(2)
@@ -375,7 +370,7 @@ $(document).ready(function () {
         .addClass("fa-circle-o");
       allChecked = false;
     }
-    if (validation.containsDigit(password)) {
+    if (v.containsDigit(password)) {
       constraint_item.eq(3).addClass("checked");
       constraint_item_icon
         .eq(3)
@@ -389,7 +384,7 @@ $(document).ready(function () {
         .addClass("fa-circle-o");
       allChecked = false;
     }
-    if (validation.containsSymbol(password)) {
+    if (v.containsSymbol(password)) {
       constraint_item.eq(4).addClass("checked");
       constraint_item_icon
         .eq(4)
@@ -416,9 +411,7 @@ $(document).ready(function () {
   $("#page_maincontent").on("click", "#register-form #submit", (e) => {
     const passwordInput = $(e.target).parents(".step").find("input[name=pass]");
     const password = passwordInput.val().trim();
-    if (validation.validatePassword(password)) {
-      ShowSuccess(passwordInput);
-      const formData = $("#register-form").serialize();
+    if (v.validatePassword(password)) {
       $.ajax({
         url: "dispatcherAjax.php?action=inscription",
         type: "POST",
