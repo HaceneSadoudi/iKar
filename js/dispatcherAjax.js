@@ -1,4 +1,5 @@
 import * as v from "./validation.js";
+import { showError, hideError, showSuccess } from "./handle-errors.js";
 $(document).ready(function () {
   $("form").attr("autocomplete", "off");
   /* ############################################################# */
@@ -256,6 +257,8 @@ $(document).ready(function () {
       const firstName = firstNameInput.val().trim();
       const lastName = lastNameInput.val().trim();
       if (v.validateName(firstName) && v.validateName(lastName)) {
+        showSuccess(lastNameInput);
+        showSuccess(firstNameInput);
         goToNextStep(currentStepIndex, currentStep, dots);
       } else if (!v.validateName(lastName)) {
         lastNameInput.parent().addClass("animate__animated animate__shakeX");
@@ -267,11 +270,11 @@ $(document).ready(function () {
         if (isLastInputInStep == 0) {
           // the keyup event was in lastNameInput
           firstNameInput.focus();
-          ShowSuccess(lastNameInput);
+          showSuccess(lastNameInput);
         } else {
           // the keyup event was in firstNameInput
           firstNameInput.parent().addClass("animate__animated animate__shakeX");
-          ShowSuccess(lastNameInput);
+          showSuccess(lastNameInput);
           showError(
             firstNameInput,
             "Le nom doit contenir au minimum 2 caractères alphabétiques"
@@ -285,6 +288,7 @@ $(document).ready(function () {
       const identifiantInput = currentStep.find("input[name=identifiant]");
       const identifiant = identifiantInput.val().trim();
       if (v.validateUsername(identifiant)) {
+        showSuccess(identifiantInput);
         goToNextStep(currentStepIndex, currentStep, dots);
       } else {
         identifiantInput.parent().addClass("animate__animated animate__shakeX");
@@ -406,7 +410,7 @@ $(document).ready(function () {
       allChecked = false;
     }
     if (allChecked) {
-      ShowSuccess($(this));
+      showSuccess($(this));
     } else {
       $(this).parents(".input-group").removeClass("success");
     }
@@ -419,6 +423,7 @@ $(document).ready(function () {
     const passwordInput = $(e.target).parents(".step").find("input[name=pass]");
     const password = passwordInput.val().trim();
     if (v.validatePassword(password)) {
+      showSuccess(passwordInput);
       $.ajax({
         url: "dispatcherAjax.php?action=inscription",
         type: "POST",
