@@ -188,27 +188,20 @@ $(document).ready(function () {
       showError(passwordInput, "Mot de passe incorrect");
     } else hideError(passwordInput);
     if (v.validateLength(username, 1) && v.validateLength(password, 1))
+      $.ajax({
+        url: "dispatcherAjax.php?action=connexion",
+        type: "POST",
+        data: "identifiant=" + username + "&pass=" + password,
+        dataType: "text",
+        success: function (response, _statut) {
           if (response == 0) {
-            /*  $("#bandeau").removeClass("success").addClass("error");
-          $("#bandeau .content").text(
-            "L'identifiant ou le mot de passe est invalide"
-          );
-          $("#bandeau").show().delay(4000).fadeOut(); */
             notif("error", "L'identifiant ou le mot de passe est invalide");
           } else if (response == 1) {
-            /* $("#bandeau").removeClass("error").addClass("success");
-          $("#bandeau .content").text("Vous êtes connecté");
-          $("#bandeau").show().delay(4000).fadeOut(); */
             notif("success", "Vous êtes maintenant connecté");
             setTimeout(function () {
               window.location.href = "index.php";
             }, 2500);
           } else {
-            /* $("#bandeau").removeClass("success").addClass("error");
-          $("#bandeau .content").text(
-            "Une erreur s'est produite. Veuillez réessayer plus tard"
-          );
-          $("#bandeau").show().delay(4000).fadeOut(); */
             notif(
               "error",
               "Une erreur s'est produite. Veuillez réessayer plus tard"
