@@ -86,7 +86,7 @@ class mainController {
 	public static function inscription($request, $context) {
 
 		if (
-			isset($request['identifiant']) && 
+			isset($request['identifiant']) &&
 			isset($request['pass']) &&
 			isset($request['prenom']) &&
 			isset($request['nom'])
@@ -103,13 +103,24 @@ class mainController {
 				validation::isName($lastname) &&
 				validation::isName($firstname)
 			) {
-				echo 1;
-				$request['identifiant'] = $request['identifiant'];
-				$request['pass'] = $request['pass'];
-				mainController::connexion($request, $context);
-			} else {
-				echo 0;
+				$user = utilisateurTable::getUserByIdentifiant($username);
+				if ($user == NULL) {
+					$user = utilisateurTable::setUser(
+						$username,
+						$password,
+						$lastname,
+						$firstname
+					);
+					echo 1; // User added successfully
+					$request['identifiant'] = $username;
+					$request['pass'] = $password;
+					mainController::connexion($request, $context);
+				} else {
+					echo 0; // Username already exists
+				}
+				return context::NONE;
 			}
+			echo 2; // inputs not valid
 			return context::NONE;
 		}
 		return context::SUCCESS;
