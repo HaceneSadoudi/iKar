@@ -96,11 +96,13 @@ class mainController {
 			$password = validation::clean($request['pass']);
 			$lastname = validation::clean($request['nom']);
 			$firstname = validation::clean($request['prenom']);
-					$request['identifiant'],
-					$request['pass'],
-					$request['nom'],
-					$request['prenom']
-				);
+			// Validate inputs
+			if (
+				validation::isUsername($username) &&
+				validation::isPassword($password) &&
+				validation::isName($lastname) &&
+				validation::isName($firstname)
+			) {
 				echo 1;
 				$request['identifiant'] = $request['identifiant'];
 				$request['pass'] = $request['pass'];
