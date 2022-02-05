@@ -240,6 +240,29 @@ $(document).ready(function () {
         .find("input[type=button]")
         .trigger("click", [isLastInputInStep]);
   });
+  /* ############################################################# */
+  /* ############  PREVENT SUBMIT ON ENTER KEY PRESS   ########### */
+  /* ############  INSIDE USERNAME INPUT (LOGIN FORM)  ########### */
+  /* ############################################################# */
+  $(document).on(
+    "keypress",
+    "#login-form input[name=identifiant]",
+    function (e) {
+      if (e.which == 13) {
+        const usernameInput = $(this).find("input[name=identifiant]");
+        const passwordInput = $(this).find("input[name=pass]");
+
+        e.preventDefault(); // Prevent submitting when the user clicks Enter key inside username input
+        if (!v.validateLength(usernameInput.val().trim(), 1)) {
+          usernameInput.parent().addClass("animate__animated animate__shakeX");
+          showError(usernameInput, "Identifiant incorrect");
+        } else {
+          hideError(usernameInput);
+          passwordInput.focus();
+        }
+      }
+    }
+  );
 
   /* ############################################################# */
   /* #################  NEXT STEP BUTTON EVENT  ################## */
