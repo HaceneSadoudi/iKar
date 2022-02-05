@@ -12,6 +12,19 @@ class trajetTable {
         return $trajet;
     }
 
+    public static function getCities($keyword) {
+        $em = dbconnection::getInstance()->getEntityManager();
+        $trajetRepo = $em->getRepository('trajet');
+        $qb = $trajetRepo->createQueryBuilder('t');
+        $cities = $qb->select('DISTINCT t.depart')
+            ->where($qb->expr()->like('t.depart', ':keyword'))
+            ->setParameter('keyword', ucfirst($keyword) . '%')
+            ->getQuery()
+            ->getResult();
+
+        return $cities;
+    }
+
     public static function setTrajet($depart, $arrivee, $distance) {
         $em = dbconnection::getInstance()->getEntityManager();
         $t = new trajet();
