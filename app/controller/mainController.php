@@ -51,6 +51,8 @@ class mainController {
 			// Sanitize & Clean inputs
 			$identifiant = validation::clean($request['identifiant']);
 			$pass = validation::clean($request['pass']);
+			// Validate inputs
+			if (validation::isUsername($identifiant) && validation::isPassword($pass)) {
 				$exist = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
 				if ($exist) {
 					$context->setSessionAttribute('is_logged', 'true');
@@ -65,6 +67,8 @@ class mainController {
 				}
 				return context::NONE;
 			}
+			echo 0;
+			return context::NONE;
 		}
 		return context::SUCCESS;
 	}
