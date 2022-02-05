@@ -91,9 +91,11 @@ class mainController {
 			isset($request['prenom']) &&
 			isset($request['nom'])
 		) {
-			$user = utilisateurTable::getUserByIdentifiant($request['identifiant']);
-			if ($user == NULL) {
-				$user = utilisateurTable::setUser(
+			// Sanitize & Clean inputs
+			$username = validation::clean($request['identifiant']);
+			$password = validation::clean($request['pass']);
+			$lastname = validation::clean($request['nom']);
+			$firstname = validation::clean($request['prenom']);
 					$request['identifiant'],
 					$request['pass'],
 					$request['nom'],
