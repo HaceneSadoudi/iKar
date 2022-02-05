@@ -48,9 +48,9 @@ class mainController {
 	public static function connexion($request, $context) {
 
 		if (isset($request['identifiant']) && isset($request['pass'])) {
-			$identifiant = $request['identifiant'];
-			$pass = $request['pass'];
-			if (!empty($identifiant) && !empty($pass)) {
+			// Sanitize & Clean inputs
+			$identifiant = validation::clean($request['identifiant']);
+			$pass = validation::clean($request['pass']);
 				$exist = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
 				if ($exist) {
 					$context->setSessionAttribute('is_logged', 'true');
