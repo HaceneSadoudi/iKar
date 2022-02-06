@@ -1,5 +1,5 @@
 <?php
-
+include_once 'validation.php';
 class mainController {
 
 	public static function accueil($request, $context) {
