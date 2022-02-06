@@ -7,3 +7,10 @@ var showError = function (input, message = "") {
   input_group.removeClass("success").addClass("error");
   small.text(message);
 };
+/* ############################################################# */
+/* ####################  HIDE INPUT ERROR  ##################### */
+/* ############################################################# */
+var hideError = function(input) {
+  const input_group = input.parents('.input-group');
+  input_group.removeClass("error");
+}
