@@ -3,7 +3,7 @@
         <div class="col-lg-7 login-form-container">
             <div class="login-form-wrapper">
                 <h1 class="title">S'identifier</h1>
-                <form id="login-form" class="">
+                <form id="login-form" class="" autocomplete="off">
                     <div class="input-group">
                         <div class="input-group-row">
                             <input name="identifiant" class="input-lg w-100" type="text" placeholder="Identifiant" />
