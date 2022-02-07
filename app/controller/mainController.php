@@ -55,7 +55,7 @@ class mainController {
 			if (validation::isUsername($identifiant) && validation::isPassword($pass)) {
 				$exist = utilisateurTable::getUserByIdentifiant($identifiant);
 				if ($exist) {
-					$hash_from_database = utilisateurTable::getPasswordHash($identifiant);
+					$hash_from_database = $exist->pass;
 					if (password_verify($pass, $hash_from_database)) {
 						$context->setSessionAttribute('is_logged', 'true');
 						$context->setSessionAttribute('id', $exist->id);

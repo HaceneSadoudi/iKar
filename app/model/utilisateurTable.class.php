@@ -41,10 +41,4 @@ class utilisateurTable {
         $em->flush();
     }
 
-    public static function getPasswordHash($identifiant) {
-        $em = dbconnection::getInstance()->getEntityManager();
-        $userRepository = $em->getRepository('utilisateur');
-        $user = $userRepository->findOneBy(array('identifiant' => $identifiant));
-        return $user->pass;
-    }
 }
