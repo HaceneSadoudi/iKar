@@ -53,15 +53,19 @@ class mainController {
 			$pass = validation::clean($request['pass']);
 			// Validate inputs
 			if (validation::isUsername($identifiant) && validation::isPassword($pass)) {
-				$exist = utilisateurTable::getUserByLoginAndPass($identifiant, $pass);
+				$exist = utilisateurTable::getUserByIdentifiant($identifiant);
 				if ($exist) {
-					$context->setSessionAttribute('is_logged', 'true');
-					$context->setSessionAttribute('id', $exist->id);
-					$context->setSessionAttribute('identifiant', $exist->identifiant);
-					$context->setSessionAttribute('nom', $exist->nom);
-					$context->setSessionAttribute('prenom', $exist->prenom);
-					$context->setSessionAttribute('image', $exist->avatar);
-					echo 1;
+					$hash_from_database = utilisateurTable::getPasswordHash($identifiant);
+					if (password_verify($pass, $hash_from_database)) {
+						$context->setSessionAttribute('is_logged', 'true');
+						$context->setSessionAttribute('id', $exist->id);
+						$context->setSessionAttribute('identifiant', $exist->identifiant);
+						$context->setSessionAttribute('nom', $exist->nom);
+						$context->setSessionAttribute('prenom', $exist->prenom);
+						echo 1;
+					} else {
+						echo 0;
+					}
 				} else {
 					echo 0;
 				}
