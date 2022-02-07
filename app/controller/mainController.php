@@ -107,7 +107,7 @@ class mainController {
 				if ($user == NULL) {
 					$user = utilisateurTable::setUser(
 						$username,
-						$password,
+						password_hash($password, PASSWORD_DEFAULT),
 						$lastname,
 						$firstname
 					);
