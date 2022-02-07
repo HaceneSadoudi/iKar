@@ -29,7 +29,7 @@ class utilisateurTable {
         $user = $userRepository->findOneBy(array('id' => $id));
         return $user;
     }
-    
+
     public static function setUser($identifiant, $pass, $nom, $prenom) {
         $em = dbconnection::getInstance()->getEntityManager();
         $ut = new utilisateur();
@@ -40,5 +40,4 @@ class utilisateurTable {
         $em->persist($ut);
         $em->flush();
     }
-
 }
