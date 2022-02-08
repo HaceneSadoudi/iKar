@@ -490,6 +490,8 @@ $(document).ready(function () {
             setTimeout(function () {
               window.location.href = "index.php";
             }, 2500);
+          } else if (response == 2) {
+            notif("error", "Les données saisies sont invalides!");
           } else {
             notif(
               "error",
