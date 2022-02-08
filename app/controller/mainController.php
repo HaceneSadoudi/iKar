@@ -13,12 +13,19 @@ class mainController {
 
 	public static function rechercheVoyage($request, $context) {
 	public static function suggestCities($request, $context) {
-		$cities = trajetTable::getCities($request['keyword']);
-		$html = "";
-		foreach ($cities as $key => $city) {
-			$html .= "<li><a href='' class='suggestion-item'>" . $cities[$key]['depart'] . "</a></li>";
+		if (isset($request['keyword'])) {
+			// Clean input
+			$keyword = validation::clean($request['keyword']);
+			// Validate input
+			if (validation::isAlphanumeric($keyword)) {
+				$cities = trajetTable::getCities($request['keyword']);
+				$html = "";
+				foreach ($cities as $key => $city) {
+					$html .= "<li><a href='' class='suggestion-item'>" . $cities[$key]['depart'] . "</a></li>";
+				}
+				echo $html;
+			}
 		}
-		echo $html;
 		return context::NONE;
 	}
 		$trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
