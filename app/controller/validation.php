@@ -21,4 +21,8 @@ class validation {
     public static function isName($data) {
         return preg_match("/^[a-zA-Z]{2,20}$/", $data);
     }
+
+    public static function isAlphanumeric($data) {
+        return preg_match('/[^a-zA0-9]/i', $data);
+    }
 }
