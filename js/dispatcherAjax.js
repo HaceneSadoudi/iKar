@@ -29,6 +29,8 @@ $(document).ready(function () {
             suggestionBox.addClass("show");
             suggestionBox.empty();
             suggestionBox.html(response);
+          } else {
+            suggestionBox.removeClass("show");
           }
         },
         error: (jqXhr, textStatus, errorThrown) => {},
