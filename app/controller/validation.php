@@ -23,6 +23,6 @@ class validation {
     }
 
     public static function isAlphanumeric($data) {
-        return preg_match('/[^a-zA0-9]/i', $data);
+        return !preg_match('/[^a-z\-0-9]/i', $data);
     }
 }
