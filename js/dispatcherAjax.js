@@ -15,6 +15,29 @@ $(document).ready(function () {
     $("#bandeau").show().delay(duration).fadeOut();
   };
 
+  $("#page_maincontent").on("keyup", "input[data-suggestion]", function (e) {
+    const keyword = $(this).val().trim();
+    const suggestionBox = $(this).parents(".input-group-row").next();
+    if (keyword.length > 0) {
+      $.ajax({
+        url: "dispatcherAjax.php?action=suggestCities",
+        type: "POST",
+        data: "keyword=" + keyword,
+        dataType: "text",
+        success: (response, _status) => {
+          if (response) {
+            suggestionBox.addClass("show");
+            suggestionBox.empty();
+            suggestionBox.html(response);
+          }
+        },
+        error: (jqXhr, textStatus, errorThrown) => {},
+      });
+    } else {
+      suggestionBox.removeClass("show");
+    }
+  });
+
   /* ############################################################# */
   /* ################  RECHERCHE VOYAGE ACCUEIL  ################# */
   /* ############################################################# */
