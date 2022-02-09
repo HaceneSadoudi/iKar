@@ -148,9 +148,4 @@ class mainController {
 		}
 		return context::SUCCESS;
 	}
-
-	public function encrypt_password($pass) {		
-		$salt = substr(md5(uniqid(rand(), TRUE)),0,4);
-		return hash("sha512", $pass.$salt);
-	}
 }
