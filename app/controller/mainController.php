@@ -12,6 +12,9 @@ class mainController {
 	}
 
 	public static function rechercheVoyage($request, $context) {
+		return context::SUCCESS;
+	}
+
 	public static function suggestCities($request, $context) {
 		if (isset($request['keyword'])) {
 			// Clean input
