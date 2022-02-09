@@ -71,38 +71,29 @@ $(document).ready(function () {
   })
 
   /* ############################################################# */
-  /* ####################  RECHERCHE VOYAGE  ##################### */
+  /* ################  RECHERCHE VOYAGE ACCUEIL  ################# */
   /* ############################################################# */
-  $("#page_maincontent").on("submit", "#rechercheVoyageForm", function (e) {
-    e.preventDefault(); // Stop from submitting
-
-    var formData = $(this).serialize();
-    var depart = $("input[name=depart]").val().trim();
-    var arrivee = $("input[name=arrivee]").val().trim();
-    if (depart == "" || arrivee == "") $(".step.step-four .next-btn").click();
-    $("span.depart").text(depart);
-    $("span.arrivee").text(arrivee);
+  $("#page_maincontent").on("submit", "#main-form", function (e) {
+    e.preventDefault();
+    var depart = $(this).find("input[name=depart]").val();
+    var arrivee = $(this).find("input[name=arrivee]").val();
+    var nbPlaces = $(this).find("input[name=nbplaces]").val();
+    alert(depart + " " + arrivee + " " + nbPlaces);
     $.ajax({
-      // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
-      url: "dispatcherAjax.php",
+      url: "dispatcherAjax.php?action=rechercheVoyage",
       type: "POST",
-      data: formData,
+      data: { depart: depart, arrivee: arrivee, nbplaces: nbPlaces },
       dataType: "text",
-      success: function (code_html, statut) {
-        $("#voyage_search_result").html(code_html);
-        /*$("#bandeau .content").text("Recherche Terminé");
-        $("#bandeau").show().delay(4000).animate({ opacity: 0 }); */
-        notif("success", "Recherche Terminé");
+      success: function (response, status) {
+        alert(response);
+        $("header .main-nav").append('<div class="row">' + response + "</div>");
+        // Copy data from main form to search form
+        $("#search-form input[name=depart]").val(depart);
+        $("#search-form input[name=arrivee]").val(arrivee);
+        $("#search-form input[name=nbplaces]").val(nbPlaces);
+        $("#search-form").submit();
       },
-      error: function (jqXhr, textStatus, errorThrown) {
-        console.log(errorThrown);
-        notif(
-          "error",
-          "Une erreur s'est produite. Veuillez réessayer plus tard"
-        );
-        /*  $("#bandeau .content").text("Désolé, une erreur s'est produite");
-        $("#bandeau").show().delay(4000).fadeOut(); */
-      },
+      error: function (jqXhr, textStatus, errorThrown) {},
     });
   });
 
