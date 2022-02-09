@@ -28,12 +28,12 @@ class mainController {
 		}
 		return context::NONE;
 	}
+
+	public static function rechercheVoyageResult($request, $context) {
 		$trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
-		if ($trajet == NULL) return context::ERROR;
+		if (!$trajet) return context::ERROR;
 		$context->voyages = voyageTable::getVoyagesByTrajet($trajet);
-		if ($context->voyages == false) {
-			return context::ERROR;
-		}
+		if (!$context->voyages) return context::ERROR;
 		return context::SUCCESS;
 	}
 
