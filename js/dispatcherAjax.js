@@ -71,52 +71,36 @@ $(document).ready(function () {
   })
 
   /* ############################################################# */
-  /* ################  RECHERCHE VOYAGE ACCUEIL  ################# */
+  /* #########  HOME FORM SEARCH + NAV SEARCH BUTTON  ############ */
   /* ############################################################# */
-  $("#page_maincontent").on("submit", "#main-form", function (e) {
-    e.preventDefault();
-    var depart = $(this).find("input[name=depart]").val();
-    var arrivee = $(this).find("input[name=arrivee]").val();
-    var nbPlaces = $(this).find("input[name=nbplaces]").val();
-    alert(depart + " " + arrivee + " " + nbPlaces);
-    $.ajax({
-      url: "dispatcherAjax.php?action=rechercheVoyage",
-      type: "POST",
-      dataType: "text",
-      success: function (response, status) {
-        alert(response);
-        $("header .main-nav").append('<div class="row">' + response + "</div>");
-        // Copy data from main form to search form
-        $("#search-form input[name=depart]").val(depart);
-        $("#search-form input[name=arrivee]").val(arrivee);
-        $("#search-form input[name=nbplaces]").val(nbPlaces);
-        $("#search-form").submit();
-      },
-      error: function (jqXhr, textStatus, errorThrown) {},
-    });
-  });
+  $(document).on(
+    "click",
+    "#main-form input[type=submit], #rechercher-btn",
+    function (e) {
+      e.preventDefault();
+      var depart = $(this).parents("form").find("input[name=depart]").val();
+      var arrivee = $(this).parents("form").find("input[name=arrivee]").val();
+      var nbPlaces = $(this).parents("form").find("input[name=nbplaces]").val();
+      $.ajax({
+        url: "dispatcherAjax.php?action=rechercheVoyage",
+        type: "POST",
+        dataType: "text",
+        success: function (response, status) {
+          $("#page_maincontent").empty();
+          $("header .main-nav").append(
+            '<div class="row">' + response + "</div>"
+          );
+          // Copy data from main form to search form
+          $("#search-form input[name=depart]").val(depart);
+          $("#search-form input[name=arrivee]").val(arrivee);
+          $("#search-form input[name=nbplaces]").val(nbPlaces);
+          $("#search-form").submit();
+        },
+        error: function (jqXhr, textStatus, errorThrown) {},
+      });
+    }
+  );
 
-  /* ############################################################# */
-  /* ####################  NAVBAR RECHERCHER  #################### */
-  /* ############################################################# */
-  $(document).on("click", "#rechercher-btn", (e) => {
-    e.preventDefault();
-    $.ajax({
-      url: "dispatcherAjax.php?action=accueil",
-      type: "POST",
-      success: function (response, status) {
-        console.log(response);
-        $("#page_maincontent").empty();
-        $("#page_maincontent").html(response);
-      },
-      error: function (jqXhr, textStatus, errorThrown) {
-        notif(
-          "error",
-          "Une erreur s'est produite. Veuillez réessayer plus tard"
-        );
-      },
-    });
-  });
   /* ############################################################# */
   /* ####################  NAVBAR PROPOSER  #################### */
   /* ############################################################# */
