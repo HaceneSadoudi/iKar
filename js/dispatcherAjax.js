@@ -82,7 +82,6 @@ $(document).ready(function () {
     $.ajax({
       url: "dispatcherAjax.php?action=rechercheVoyage",
       type: "POST",
-      data: { depart: depart, arrivee: arrivee, nbplaces: nbPlaces },
       dataType: "text",
       success: function (response, status) {
         alert(response);
