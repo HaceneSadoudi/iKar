@@ -1,7 +1,7 @@
 <div id="register-container">
     <div class="row m-0">
-        <div class="col-lg-7 register-form-container">
-            <div class="register-form-wrapper">
+        <div class="col-lg-7 register-form__container">
+            <div class="register-form__wrapper">
                 <ul class="progress-bar">
                     <li class="progress-bar__dot current"><span>1</span><i class="fa fa-check"></i></li>
                     <li class="progress-bar__connector"></li>
@@ -86,8 +86,8 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-5 register-info-container">
-            <div class="register-info-wrapper">
+        <div class="col-lg-5 register-info__container">
+            <div class="register-info__wrapper">
             </div>
         </div>
     </div>

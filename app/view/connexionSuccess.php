@@ -1,7 +1,7 @@
 <div id="login-container">
     <div class="row m-0">
-        <div class="col-lg-7 login-form-container">
-            <div class="login-form-wrapper">
+        <div class="col-lg-7 login-form__container">
+            <div class="login-form__wrapper">
                 <h1 class="title">S'identifier</h1>
                 <form id="login-form" class="" autocomplete="off">
                     <div class="input-group">
@@ -29,8 +29,8 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-5 login-info-container">
-            <div class="login-info-wrapper">
+        <div class="col-lg-5 login-info__container">
+            <div class="login-info__wrapper">
             </div>
         </div>
     </div>
