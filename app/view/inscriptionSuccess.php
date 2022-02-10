@@ -78,7 +78,9 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="input-group">
+                        <div class="input-group mb-3">
+                            <input class="button button-lg" id="submit" type="button" value="Créer mon compte">
+                        </div>
                     </div>
                     <div class="input-group mt-4">
                         <p>Vous êtes déjà membre, <a href="" class="connexion-btn">S'identifier</a></p>
