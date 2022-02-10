@@ -81,23 +81,24 @@ $(document).ready(function () {
       var depart = $(this).parents("form").find("input[name=depart]").val();
       var arrivee = $(this).parents("form").find("input[name=arrivee]").val();
       var nbPlaces = $(this).parents("form").find("input[name=nbplaces]").val();
-      $.ajax({
-        url: "dispatcherAjax.php?action=rechercheVoyage",
-        type: "POST",
-        dataType: "text",
-        success: function (response, status) {
-          $("#page_maincontent").empty();
-          $("header .main-nav").append(
-            '<div class="row">' + response + "</div>"
-          );
-          // Copy data from main form to search form
-          $("#search-form input[name=depart]").val(depart);
-          $("#search-form input[name=arrivee]").val(arrivee);
-          $("#search-form input[name=nbplaces]").val(nbPlaces);
-          $("#search-form").submit();
-        },
-        error: function (jqXhr, textStatus, errorThrown) {},
-      });
+      if (!$("header .main-nav .main-nav__search").length)
+        $.ajax({
+          url: "dispatcherAjax.php?action=rechercheVoyage",
+          type: "POST",
+          dataType: "text",
+          success: function (response, status) {
+            $("#page_maincontent").empty();
+            $("header .main-nav").append(
+              '<div class="row main-nav__search">' + response + "</div>"
+            );
+            // Copy data from main form to search form
+            $("#search-form input[name=depart]").val(depart);
+            $("#search-form input[name=arrivee]").val(arrivee);
+            $("#search-form input[name=nbplaces]").val(nbPlaces);
+            $("#search-form").submit();
+          },
+          error: function (jqXhr, textStatus, errorThrown) {},
+        });
     }
   );
 
