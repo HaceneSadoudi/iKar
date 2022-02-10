@@ -249,8 +249,10 @@ $(document).ready(function () {
     "#login-form input[name=identifiant]",
     function (e) {
       if (e.which == 13) {
-        const usernameInput = $(this).find("input[name=identifiant]");
-        const passwordInput = $(this).find("input[name=pass]");
+        const usernameInput = $(this);
+        const passwordInput = $(this)
+          .parents("#login-form")
+          .find("input[name=pass]");
 
         e.preventDefault(); // Prevent submitting when the user clicks Enter key inside username input
         if (!v.validateLength(usernameInput.val().trim(), 1)) {
