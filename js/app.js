@@ -1,4 +1,55 @@
+import { validatePassword, validateLength } from "./validation.js";
+
+/* ############################################################# */
+/* ################### SIGN-UP STEPS DOTS #################### */
+/* ############################################################# */
+$(document).on("click", ".progress-bar__dot", function (e) {
+  const targetStepIndex = $(this).index(".progress-bar__dot");
+  const targetStep = $("#register-form .step").eq(targetStepIndex);
+  const currentStep = $("#register-form .step.active");
+  const currentStepIndex = currentStep.index();
+  const dots = $(this).parent().find(".progress-bar__dot");
+  console.log("[C:" + currentStepIndex + "],[T:" + targetStepIndex + "]");
+  // Going backward
+  for (let i = currentStepIndex; i >= targetStepIndex; i--) {
+    if (i == currentStepIndex && currentStepIndex != targetStepIndex) {
+      currentStep.removeClass("active");
+      targetStep.addClass("active");
+      targetStep.addClass("animate__animated animate__fadeInLeft");
+      dots.eq(i).removeClass("current");
+    } else if (i == targetStepIndex && currentStepIndex != targetStepIndex) {
+      dots.eq(i).removeClass("checked").addClass("current");
+    } else {
+      dots.eq(i).removeClass("checked");
+    }
+  }
+});
+
+/* ############################################################# */
+/* #################  VALIDATE LOGIN ENTRIES  ################## */
+/* ############################################################# */
+export function validateLoginEntries() {
+  let loginUsername = $("#login-form input[type=text]"),
+    loginPassword = $("#login-form input[type=password]");
+
+  return {
+    username: loginUsername.trim().substr(0, 20),
+    password: loginPassword.trim().substr(0, 20),
+  };
+}
+
 $(document).ready(function () {
+  /* ############################################################# */
+  /* ####################### FIXED NAVBAR ######################## */
+  /* ############################################################# */
+  $(window).bind("scroll", function () {
+    const $top_nav = $(".top-nav").outerHeight(true) + 10;
+    if ($(this).scrollTop() > $top_nav) {
+      $(".main-nav").addClass("fixed");
+    } else {
+      $(".main-nav").removeClass("fixed");
+    }
+  });
   /* ############################################################# */
   /* ################  PASSWORD HIDE/SHOW TOGGLE  ################ */
   /* ############################################################# */
@@ -16,102 +67,4 @@ $(document).ready(function () {
       icon.removeClass("fa-eye-slash");
     }
   });
-
-  /* ############################################################# */
-  /* ####################  LOGIN VALIDATION  ##################### */
-  /* ############################################################# */
-  loginValidation = function () {
-    let loginUsername = $("#connexionForm input[type=text]"),
-      loginPassword = $("#connexionForm input[type=password]"),
-      valid = true;
-
-    if (loginUsername.val().trim().length == 0) {
-      showError(loginUsername, "L'identifiant ne peut pas être vide");
-      valid = false;
-    } else {
-      hideError(loginUsername);
-    }
-
-$(document).on("click", ".progress-bar__dot", function (e) {
-  const targetStepIndex = $(this).index(".progress-bar__dot");
-  const targetStep = $("#register-form .step").eq(targetStepIndex);
-  const currentStep = $("#register-form .step.active");
-  const currentStepIndex = currentStep.index();
-  const dots = $(this).parent().find(".progress-bar__dot");
-  console.log("[C:" + currentStepIndex + "],[T:" + targetStepIndex+"]");
-  // Going backward
-  for (let i = currentStepIndex; i >= targetStepIndex; i--) {
-    if (i == currentStepIndex && currentStepIndex != targetStepIndex) {
-      currentStep.removeClass("active");
-      targetStep.addClass("active");
-      //currentStep.removeClass("animate__fadeInLeft");
-      targetStep.addClass("animate__animated animate__fadeInLeft");
-      dots.eq(i).removeClass("current");
-    }else if(i == targetStepIndex && currentStepIndex != targetStepIndex) {
-      dots.eq(i).removeClass("checked").addClass("current");
-    }else {
-      dots.eq(i).removeClass("checked");
-    }
-  }
-});
-  signUpValidation = function () {
-    let signupLastname = $("#inscriptionForm input[name=rnom]"),
-      signupFirstname = $("#inscriptionForm input[name=rprenom]"),
-      signupUsername = $("#inscriptionForm input[name=ridentifiant]"),
-      signupPassword = $("#inscriptionForm input[name=rpass]"),
-      valid = true;
-
-    if (signupLastname.val().trim().length == 0) {
-      showError(signupLastname, "Le nom ne peut pas être vide");
-      valid = false;
-    } else {
-      hideError(signupLastname);
-    }
-
-    if (signupFirstname.val().trim().length == 0) {
-      showError(signupFirstname, "Le prénom ne peut pas être vide");
-      valid = false;
-    } else {
-      hideError(signupFirstname);
-    }
-    if (signupUsername.val().trim().length < 4) {
-      showError(
-        signupUsername,
-        "L'identifiant doit comporter au moins 4 caractères"
-      );
-      valid = false;
-    } else {
-      hideError(signupUsername);
-    }
-    if (signupPassword.val().trim().length < 6) {
-      showError(
-        signupPassword,
-        "Le mot de passe doit comporter au moins 6 caractères"
-      );
-      valid = false;
-    } else {
-      hideError(signupPassword);
-    }
-    return valid;
-  };
-
-  /* ############################################################# */
-  /* ####################### FIXED NAVBAR ######################## */
-  /* ############################################################# */
-  $(window).bind("scroll", function () {
-    const $top_nav = $(".top-nav").outerHeight(true) + 10;
-    console.log($top_nav);
-    if ($(this).scrollTop() > $top_nav) {
-      $(".main-nav").addClass("fixed");
-    } else {
-      $(".main-nav").removeClass("fixed");
-    }
-  });
-  /* ############################################################# */
-  /* ####################  HIDE INPUT ERROR  ##################### */
-  /* ############################################################# */
-  var hideError = function (input) {
-    const alert_message = input.next();
-    alert_message.css("visibility", "hidden");
-  };
 });
