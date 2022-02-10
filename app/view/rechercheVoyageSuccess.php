@@ -1,27 +1,43 @@
-<ul class="search-list">
-    <?php $count = 0;
-    foreach ($context->voyages as $row) {
-        if ($count % 2 == 0) { ?>
-            <div class="row justify-content-center">
-            <?php } ?>
-            <div class="col-6">
-                <li class="search-card">
-                    <div href="" class="reserve-btn">Resérver</div>
-                    <div class="content">
-                        <div>
-                            <p><b>Heure de départ : <?php echo $row->heureDepart, ":00" ?></b></p>
-                            <p><b>Contraintes : <?php echo $row->contraintes ?></b></p>
-                            <p>Il rest que <?php echo $row->nbPlace ?> place(s) </p>
+<section id="search-section">
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-lg-12 main-form__container">
+                <div class="search-form__wrapper">
+                    <form id="search-form" class="" autocomplete="off">
+                        <div class="search-form__inner-wrapper d-flex align-items-end">
+                            <div class="input-group">
+                                <small class="">Ville de départ</small>
+                                <div class="input-group-row m-0">
+                                    <input name="depart" data-suggestion class="input-sm rounded-0" type="text" placeholder="Ex: Paris, Avignon, Lille..." />
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </div>
+                                <ul class="suggestion-box"></ul>
+                            </div>
+                            <div class="input-group position-relative">
+                                <small class="">Ville d'arrivée</small>
+                                <div class="input-group-row m-0">
+                                    <input name="arrivee" data-suggestion class="input-sm rounded-0" type="text" placeholder="Ex: Paris, Avignon, Lille..." />
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </div>
+                                <ul class="suggestion-box"></ul>
+                            </div>
+                            <div class="input-group">
+                                <small class="">Nombre de places</small>
+                                <div class="input-group-row m-0">
+                                    <input name="nbplaces" class="input-sm rounded-0" type="text" placeholder="Ex: 1, 2, 3" />
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <input class="button2 w-100 rounded-0" type="submit" value="Rechercher">
+                            </div>
                         </div>
-                        <div>
-                            <h2><?php echo $row->tarif ?> €</h2>
-                        </div>
-                    </div>
-                </li>
+                    </form>
+                </div>
             </div>
-            <?php if ($count % 2 != 0) { ?>
-            </div>
-        <?php }
-            $count++; ?>
-    <?php } ?>
-</ul>
+        </div>
+    </div>
+</section>
