@@ -25,19 +25,6 @@ $(document).on("click", ".progress-bar__dot", function (e) {
   }
 });
 
-/* ############################################################# */
-/* #################  VALIDATE LOGIN ENTRIES  ################## */
-/* ############################################################# */
-export function validateLoginEntries() {
-  let loginUsername = $("#login-form input[type=text]"),
-    loginPassword = $("#login-form input[type=password]");
-
-  return {
-    username: loginUsername.trim().substr(0, 20),
-    password: loginPassword.trim().substr(0, 20),
-  };
-}
-
 $(document).ready(function () {
   /* ############################################################# */
   /* ####################### FIXED NAVBAR ######################## */
