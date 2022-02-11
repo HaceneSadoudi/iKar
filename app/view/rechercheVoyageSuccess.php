@@ -41,3 +41,13 @@
         </div>
     </div>
 </section>
+
+<section id="result-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="search-result"></div>
+            </div>
+        </div>
+    </div>
+</section>
