@@ -33,8 +33,10 @@ $(document).ready(function () {
     const $top_nav = $(".top-nav").outerHeight(true) + 10;
     if ($(this).scrollTop() > $top_nav) {
       $(".main-nav").addClass("fixed");
+      $("#search-section").addClass("fixed").css("top", $top_nav);
     } else {
       $(".main-nav").removeClass("fixed");
+      $("#search-section").removeClass("fixed");
     }
   });
   /* ############################################################# */
