@@ -40,6 +40,13 @@ $(document).ready(function () {
     }
   });
 
+  $(document).on("click", ".suggestion-item", function (e) {
+    e.preventDefault();
+    const suggestBox = $(e.target).parents("ul.suggestion-box");
+    const input = suggestBox.prev().find("input");
+    input.val($(e.target).text());
+    suggestBox.removeClass("show");
+  });
   /* ############################################################# */
   /* ################  RECHERCHE VOYAGE ACCUEIL  ################# */
   /* ############################################################# */
