@@ -5,10 +5,16 @@ require_once "voyage.class.php";
 
 class voyageTable {
 
-    public static function getVoyagesByTrajet($trajet) {
+    public static function getVoyagesByTrajet($trajet, $nbPlace) {
         $em = dbconnection::getInstance()->getEntityManager();
         $voyageRepo = $em->getRepository('voyage');
-        $voyages = $voyageRepo->findBy(array('trajet' => $trajet));
+        $qb = $voyageRepo->createQueryBuilder('v');
+        $voyages = $qb->select('v.id,IDENTITY(v.trajet),IDENTITY(v.conducteur), v.tarif, v.nbPlace, v.heureDepart, v.contraintes ')
+            ->where('v.trajet = ' . $trajet->id)
+            ->andWhere($qb->expr()->gte('v.nbPlace ', ':nbr'))
+            ->setParameter('nbr', $nbPlace)
+            ->getQuery()
+            ->getResult();
         return $voyages;
     }
 
