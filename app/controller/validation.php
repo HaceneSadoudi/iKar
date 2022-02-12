@@ -35,5 +35,6 @@ class validation {
             if ($cities) return true;
             else return false;
         }
+        return false;
     }
 }
