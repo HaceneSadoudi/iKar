@@ -47,6 +47,18 @@ $(document).ready(function () {
     input.val($(e.target).text());
     suggestBox.removeClass("show");
   });
+  function isCityExiste(input) {
+    const city = input.val();
+    const suggestions = input
+      .parents(".input-group-row")
+      .next()
+      .find(".suggestion-item")
+      .map(function () {
+        return $(this).text();
+      })
+      .get();
+    return suggestions.includes(city);
+  }
   /* ############################################################# */
   /* ################  RECHERCHE VOYAGE ACCUEIL  ################# */
   /* ############################################################# */
