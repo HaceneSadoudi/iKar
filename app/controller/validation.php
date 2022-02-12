@@ -25,4 +25,15 @@ class validation {
     public static function isAlphanumeric($data) {
         return !preg_match('/[^a-z\-0-9]/i', $data);
     }
+
+    public static function isCityExists($city) {
+        // Clean input
+        $city = validation::clean($city);
+        // Validate input
+        if (validation::isAlphanumeric($city)) {
+            $cities = trajetTable::getCities($city);
+            if ($cities) return true;
+            else return false;
+        }
+    }
 }
