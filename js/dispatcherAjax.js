@@ -60,35 +60,49 @@ $(document).ready(function () {
     return suggestions.includes(city);
   }
   /* ############################################################# */
-  /* ################  RECHERCHE VOYAGE ACCUEIL  ################# */
+  /* #######################  SEARCH VOYAGE  ##################### */
   /* ############################################################# */
-  $("#page_maincontent").on('submit', '#hero_search_form', function(e) {
+  $(document).on("submit", "#search-form", function (e) {
     e.preventDefault();
-    let formData = $(this).serialize();
-    var depart = $(this).find('input[name=depart]').val();
-    var arrivee = $(this).find('input[name=arrivee]').val();
-    var nbPlaces = $(this).find('input[name=nbplaces]').val();
-    alert(depart + " " + arrivee +" "+ nbPlaces);
-    $.ajax({
-      url: "dispatcherAjax.php",
-      type: "POST",
-      data: formData,
-      dataType: "text",
-      success: function(response, status) {
-        $("#page_maincontent").empty();
-        $("#page_maincontent").html(response);
-        $("#rechercheVoyageForm input[name=depart]").val(depart);
-        $("#rechercheVoyageForm input[name=arrivee]").val(arrivee);
-        $("#rechercheVoyageForm input[name=nbplaces]").val(nbPlaces);
-        $("#rechercheVoyageForm").submit();
-      },
-      error : function(jqXhr, textStatus, errorThrown) {
-        
-      }
-    });
-
-  })
-
+    const departInput = $(this).find("input[name=depart]");
+    const arriveeInput = $(this).find("input[name=arrivee]");
+    const nbPlacesInput = $(this).find("input[name=nbplaces]");
+    // Cleaning inputs
+    var depart = $(this).find("input[name=depart]").val().trim();
+    var arrivee = $(this).find("input[name=arrivee]").val().trim();
+    var nbPlaces = $(this).find("input[name=nbplaces]").val().trim();
+    // Validate inputs
+    if (
+      isCityExiste(departInput) &&
+      isCityExiste(arriveeInput) &&
+      !isNaN(nbPlaces) &&
+      nbPlaces > 0
+    ) {
+      // Close suggestion box of the form
+      $(this).find(".suggestion-box").removeClass("show");
+      $.ajax({
+        url: "dispatcherAjax.php?action=rechercheVoyageResult",
+        type: "POST",
+        data: {
+          depart: depart,
+          arrivee: arrivee,
+          nbplaces: nbPlaces,
+        },
+        dataType: "html",
+        success: function (response, status) {
+          $("#search-result").empty();
+          $("#search-result").html(response);
+          $("#search-form input[name=depart]").val(depart);
+          $("#search-form  input[name=arrivee]").val(arrivee);
+          $("#search-form  input[name=nbplaces]").val(nbPlaces);
+          // $("#search-form ").submit();
+        },
+        error: function (jqXhr, textStatus, errorThrown) {},
+      });
+    } else {
+      $("#search-result").empty();
+    }
+  });
   /* ############################################################# */
   /* #########  HOME FORM SEARCH + NAV SEARCH BUTTON  ############ */
   /* ############################################################# */
