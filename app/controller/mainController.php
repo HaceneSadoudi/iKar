@@ -33,10 +33,25 @@ class mainController {
 	}
 
 	public static function rechercheVoyageResult($request, $context) {
-		$trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
-		if (!$trajet) return context::ERROR;
-		$context->voyages = voyageTable::getVoyagesByTrajet($trajet);
-		if (!$context->voyages) return context::ERROR;
+		if (isset($request['depart']) && isset($request['arrivee']) && isset($request['nbplaces'])) {
+			// Clean inputs
+			$depart = validation::clean($request['depart']);
+			$arrivee = validation::clean($request['arrivee']);
+			$nbPlaces = validation::clean($request['nbplaces']);
+			// Validate inputs
+			if (
+				validation::isCityExists($depart) &&
+				validation::isCityExists($arrivee) &&
+				is_numeric($nbPlaces) &&
+				$nbPlaces > 0
+			) {
+				$trajet = trajetTable::getTrajet($depart, $arrivee);
+				if (!$trajet) return context::ERROR;
+				$context->voyages = voyageTable::getVoyagesByTrajet($trajet, $nbPlaces);
+				if (!$context->voyages) return context::ERROR;
+				return context::SUCCESS;
+			}
+		}
 		return context::SUCCESS;
 	}
 
