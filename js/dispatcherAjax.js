@@ -473,7 +473,7 @@ $(document).ready(function () {
       $(this).parents(".input-group").removeClass("success");
     }
   });
-  
+
   /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
   /* ############################################################# */
@@ -490,7 +490,12 @@ $(document).ready(function () {
       $.ajax({
         url: "dispatcherAjax.php?action=inscription",
         type: "POST",
-        data: formData,
+        data: {
+          nom: lastname,
+          prenom: firstname,
+          identifiant: username,
+          pass: password,
+        },
         dataType: "text",
         success: function (response, status) {
           if (response == 0) {
