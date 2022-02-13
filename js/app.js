@@ -30,12 +30,10 @@ $(document).ready(function () {
   /* ####################### FIXED NAVBAR ######################## */
   /* ############################################################# */
   $(window).bind("scroll", function () {
-    const $top_nav = $(".top-nav").outerHeight(true) + 10;
-    if ($(this).scrollTop() > $top_nav) {
-      $(".main-nav").addClass("fixed");
-      $("#search-section").addClass("fixed").css("top", $top_nav);
+    const headerHeight = $("header").height();
+    if ($(window).scrollTop() > headerHeight) {
+      $("#search-section").addClass("fixed");
     } else {
-      $(".main-nav").removeClass("fixed");
       $("#search-section").removeClass("fixed");
     }
   });
