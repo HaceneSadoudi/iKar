@@ -121,9 +121,7 @@ $(document).ready(function () {
           dataType: "text",
           success: function (response, status) {
             $("#page_maincontent").empty();
-            $("header .main-nav").append(
-              '<div class="row main-nav__search">' + response + "</div>"
-            );
+            $("#page_maincontent").html(response);
             // Copy data from main form to search form
             $("#search-form input[name=depart]").val(depart);
             $("#search-form input[name=arrivee]").val(arrivee);
