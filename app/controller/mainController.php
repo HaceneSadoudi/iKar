@@ -24,7 +24,7 @@ class mainController {
 				$cities = trajetTable::getCities($request['keyword']);
 				$html = "";
 				foreach ($cities as $key => $city) {
-					$html .= "<li><a href='' class='suggestion-item'>" . $cities[$key]['depart'] . "</a></li>";
+					$html .= "<li><a href='' class='suggestion-item select-menu__button'>" . $cities[$key]['depart'] . "</a></li>";
 				}
 				echo $html;
 			}
