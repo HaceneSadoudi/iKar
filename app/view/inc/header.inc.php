@@ -13,22 +13,53 @@
                     <li class="social-media-item"><a href=""><i class="fa fa-behance" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
-            <li><a href="#"></a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#" class="button">Se connecter</a></li>
-        </ul>
-    </nav>
-    <nav class="main-nav">
-        <input type="checkbox" id="check" />
-        <label for="check" class="menu-btn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <a href="index.php" class="logo">andraWare</a>
-        <ul class="navlinks">
-            <li><a href="#"></a></li>
-            <li><a href="#">Proposer Voyage</a></li>
-            <li><a href="#"></a></li>
-        </ul>
+            <div class=" main-nav">
+                <div class="container">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <a href="index.php" class="logo">iKar</a>
+                        <ul class="navlinks">
+                            <li><a href="#" id="rechercher-btn">Rechercher</a></li>
+                            <?php if ($context->getSessionAttribute('is_logged') != NULL) { ?>
+                                <li><a href="#" id="proposer-btn">Proposer</a></li>
+                            <?php } ?>
+                            <?php if ($context->getSessionAttribute('is_logged') != NULL) { ?>
+                                <!-- <li><a href="#"></a></li> -->
+                            <?php } ?>
+                            <?php if ($context->getSessionAttribute('is_logged') != NULL) { ?>
+                                <!-- <li id=""><a href=""></a></li> -->
+                            <?php } ?>
+                            <li class="dropdown-menu-trigger">
+                                <?php if ($context->getSessionAttribute('is_logged')) { ?>
+                                    <a href="javascript:void(0)" class="navbar-profile-toggle">
+                                        <img class="pf-img" src="https://img.icons8.com/external-becris-flat-becris/64/000000/external-user-avatars-becris-flat-becris.png" />
+                                        <!-- <span class="pf-username"><?php echo $context->getSessionAttribute('identifiant'); ?></span> -->
+                                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="menu">
+                                        <ul class="menu-list">
+                                            <li class="menu-item">
+                                                <a href="" class="menu-button"><i class="fa fa-user-o" aria-hidden="true"></i>Profile</a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="" class="menu-button"><i class="fa fa-sliders" aria-hidden="true"></i>Settings</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="menu-list">
+                                            <li class="menu-item">
+                                                <a href="index.php?action=deconnexion" id="disconnect" class="menu-button menu-button"><i class="fa fa-power-off" aria-hidden="true"></i>Déconnexion</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="javascript:void(0)" id="connexion-btn" class="button2 connexion-btn">Connexion</a>
+                                <?php } ?>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
 
 
