@@ -12,7 +12,7 @@
                                     <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                                 </div>
-                                <ul class="suggestion-box"></ul>
+                                <ul class="suggestion-box select-menu"></ul>
                             </div>
                             <div class="input-group position-relative">
                                 <small class="">Ville d'arrivée</small>
@@ -21,7 +21,7 @@
                                     <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                                 </div>
-                                <ul class="suggestion-box"></ul>
+                                <ul class="suggestion-box select-menu"></ul>
                             </div>
                             <div class="input-group">
                                 <small class="">Nombre de places</small>
