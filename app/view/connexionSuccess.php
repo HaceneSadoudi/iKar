@@ -20,11 +20,12 @@
                         </div>
                         <small class="alert-message">Error</small>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group align-items-center justify-content-between mb-3">
                         <input class="button button-lg" type="submit" value="Se connecter">
+                        <a href="">Mot de passe oublier?</a>
                     </div>
-                    <div class="input-group mt-4">
-                        <p>Pas encore membre? <a href="" class="inscription-btn" >S'inscrire</a></p>
+                    <div class="input-group mt-5">
+                        <p>Pas encore membre? <a href="" class="inscription-btn">S'inscrire</a></p>
                     </div>
                 </form>
             </div>

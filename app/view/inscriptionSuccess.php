@@ -14,7 +14,7 @@
                     <div class="step active">
                         <div class="input-group">
                             <div class="input-group-row">
-                                <input name="nom" type="text" placeholder="Nom" autofocus />
+                                <input name="nom" class="input-lg w-100" type="text" placeholder="Nom" required autofocus minlength="2" />
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </div>
@@ -22,33 +22,33 @@
                         </div>
                         <div class="input-group">
                             <div class="input-group-row">
-                                <input name="prenom" type="text" placeholder="Prénom" />
+                                <input name="prenom" class="input-lg w-100" type="text" placeholder="Prénom" required minlength="2" />
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </div>
                             <small class="alert-message">Error</small>
                         </div>
                         <div class="input-group">
-                            <input class="button next-step-btn" type="button" value="Suivant">
+                            <input class="button button-lg next-step-btn" type="button" value="Suivant">
                         </div>
                     </div>
                     <div class="step">
                         <div class="input-group">
                             <div class="input-group-row">
-                                <input name="identifiant" type="text" placeholder="Identifiant" />
+                                <input name="identifiant" class="input-lg w-100" type="text" placeholder="Identifiant" required minlength="4" />
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </div>
                             <small class="alert-message">Error</small>
                         </div>
                         <div class="input-group">
-                            <input class="button next-step-btn" type="button" value="Suivant">
+                            <input class="button button-lg next-step-btn" type="button" value="Suivant">
                         </div>
                     </div>
                     <div class="step">
                         <div class="input-group">
                             <div class="input-group-row">
-                                <input name="pass" type="password" placeholder="Mot de passe" />
+                                <input name="pass" class="input-lg w-100" type="password" placeholder="Mot de passe" required minlength="8" />
                                 <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </div>
