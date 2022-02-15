@@ -47,6 +47,7 @@ $(document).ready(function () {
     input.val($(e.target).text());
     suggestBox.removeClass("show");
   });
+
   function isCityExiste(input) {
     const city = input.val();
     const suggestions = input
@@ -159,7 +160,7 @@ $(document).ready(function () {
   /* ############################################################# */
   /* ####################  NAVBAR CONNEXION  ##################### */
   /* ############################################################# */
-  $(document).on("click", ".connexion-btn", () => {
+  $(document).on("click", "#connexion-btn", (e) => {
     $.ajax({
       // url : 'monApplicationAjax.php?action=testVoyage&depart='+formData['depart']+'&arrivee='+formData['arrivee'],
       url: "dispatcherAjax.php?action=connexion",
@@ -335,7 +336,7 @@ $(document).ready(function () {
           showSuccess(lastNameInput);
           showError(
             firstNameInput,
-            "Le nom doit contenir au minimum 2 caractères alphabétiques"
+            "Le prénom doit contenir au minimum 2 caractères alphabétiques"
           );
         }
       }
