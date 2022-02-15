@@ -124,9 +124,11 @@ $(document).ready(function () {
             $("#page_maincontent").html(response);
             // Copy data from main form to search form
             $("#search-form input[name=depart]").val(depart);
+            $("#search-form input[name=depart]").keyup();
             $("#search-form input[name=arrivee]").val(arrivee);
+            $("#search-form input[name=arrivee]").keyup();
             $("#search-form input[name=nbplaces]").val(nbPlaces);
-            $("#search-form").submit();
+            setTimeout(() => $("#search-form").submit(), 100);
           },
           error: function (jqXhr, textStatus, errorThrown) {},
         });
