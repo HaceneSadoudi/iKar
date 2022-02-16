@@ -32,6 +32,7 @@
     <div id="page_maincontent">
       <?php include($template_view); ?>
     </div>
+    <?php include("app/view/inc/footer.inc.php") ?>
   </div>
 
 
