@@ -4,6 +4,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="google-signin-client_id" content="393206312020-qrt02hp5bolq0diifh95qia7rc20lcqu.apps.googleusercontent.com">
+  <!-- No Caching -->
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
   <title>
     Ton appli !
   </title>
