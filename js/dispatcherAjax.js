@@ -358,7 +358,7 @@ $(document).ready(function () {
       }
     }
   });
-  // FIXME Prevent signup/signin when user is logged                                                                                                                  
+  // FIXME Prevent signup/signin when user is logged
   /* ############################################################# */
   /* ##########  REMOVE ANIMATION CLASSES AFTER FINISH  ########## */
   /* ############################################################# */
