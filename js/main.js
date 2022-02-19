@@ -33,3 +33,11 @@ jQuery(document).ready(function ($) {
       steps[index - 1].classList.add("active");
     }
   }
+
+  var siteDatePicker = function () {
+    if ($(".datepicker").length > 0) {
+      $(".datepicker").datepicker();
+    }
+  };
+  siteDatePicker();
+
