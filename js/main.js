@@ -46,6 +46,16 @@ jQuery(document).ready(function ($) {
         $this.addClass("active");
       }
     });
+
+    // click outisde offcanvas
+    $(document).mouseup(function (e) {
+      var container = $(".site-mobile-menu");
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        if ($("body").hasClass("offcanvas-menu")) {
+          $("body").removeClass("offcanvas-menu");
+        }
+      }
+    });
   var siteDatePicker = function () {
     if ($(".datepicker").length > 0) {
       $(".datepicker").datepicker();
