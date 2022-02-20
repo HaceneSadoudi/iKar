@@ -34,6 +34,14 @@ jQuery(document).ready(function ($) {
     }
   }
 
+  // Sign-up / Sign-in
+  $("#page").on("click", "#signUpButton", () => {
+    $(".sign-container")[0].classList.add("right-panel-active");
+  });
+
+  $("#page").on("click", "#signInButton", () => {
+    $(".sign-container")[0].classList.remove("right-panel-active");
+  });
     $("body").on("click", ".js-menu-toggle", function (e) {
       var $this = $(this);
       e.preventDefault();
@@ -98,6 +106,33 @@ jQuery(document).ready(function ($) {
     }
   };
   siteDatePicker();
+
+  // navigation
+  var OnePageNavigation = function () {
+    var navToggler = $(".site-menu-toggle");
+
+    $("body").on(
+      "click",
+      ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a[href^='#']",
+      function (e) {
+        e.preventDefault();
+
+        var hash = this.hash;
+
+        $("html, body").animate(
+          {
+            scrollTop: $(hash).offset().top - 50,
+          },
+          600,
+          "easeInOutExpo",
+          function () {
+            // window.location.hash = hash;
+          }
+        );
+      }
+    );
+  };
+  OnePageNavigation();
 
   var siteScroll = function () {
     $(window).scroll(function () {
