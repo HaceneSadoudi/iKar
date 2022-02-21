@@ -48,6 +48,13 @@ jQuery(document).ready(function ($) {
   $("#page").on("click", "#signInButton", () => {
     $(".sign-container")[0].classList.remove("right-panel-active");
   });
+    $(".js-clone-nav").each(function () {
+      var $this = $(this);
+      $this
+        .clone()
+        .attr("class", "site-nav-wrap")
+        .appendTo(".site-mobile-menu-body");
+    });
     setTimeout(function () {
       var counter = 0;
       $(".site-mobile-menu .has-children").each(function () {
