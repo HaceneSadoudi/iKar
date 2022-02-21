@@ -48,6 +48,8 @@ jQuery(document).ready(function ($) {
   $("#page").on("click", "#signInButton", () => {
     $(".sign-container")[0].classList.remove("right-panel-active");
   });
+
+  var siteMenuClone = function () {
     $(".js-clone-nav").each(function () {
       var $this = $(this);
       $this
@@ -55,6 +57,7 @@ jQuery(document).ready(function ($) {
         .attr("class", "site-nav-wrap")
         .appendTo(".site-mobile-menu-body");
     });
+
     setTimeout(function () {
       var counter = 0;
       $(".site-mobile-menu .has-children").each(function () {
@@ -119,6 +122,8 @@ jQuery(document).ready(function ($) {
         }
       }
     });
+  };
+  siteMenuClone();
 
   var siteSliderRange = function () {
     $("#slider-range").slider({
