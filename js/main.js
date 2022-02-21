@@ -48,6 +48,16 @@ jQuery(document).ready(function ($) {
   $("#page").on("click", "#signInButton", () => {
     $(".sign-container")[0].classList.remove("right-panel-active");
   });
+    $("body").on("click", ".arrow-collapse", function (e) {
+      var $this = $(this);
+      if ($this.closest("li").find(".collapse").hasClass("show")) {
+        $this.removeClass("active");
+      } else {
+        $this.addClass("active");
+      }
+      e.preventDefault();
+    });
+
     $(window).resize(function () {
       var $this = $(this),
         w = $this.width();
