@@ -4,14 +4,13 @@
         if ($count % 2 == 0) { ?>
             <div class="row justify-content-center">
             <?php } ?>
-            <div class="col-6">
+            <div class="col-12 col-md-10 col-lg-6 col-xl-6  px-xl-3">
                 <li class="search-card">
-                    <div href="" class="reserve-btn">Resérver</div>
                     <div class="content">
                         <div>
-                            <p><b>Heure de départ : <?php echo $row['heureDepart'], ":00" ?></b></p>
-                            <p><b>Contraintes : <?php echo $row['contraintes'] ?></b></p>
-                            <p>Il rest que <?php echo $row['nbPlace'] ?> place(s) </p>
+                            <p class="mb-2"><b>Heure de départ : <?php echo $row['heureDepart'], ":00" ?></b></p>
+                            <p class="mb-2"><b>Contraintes : <?php echo $row['contraintes'] ?></b></p>
+                            <p class="">Il rest que <?php echo $row['nbPlace'] ?> place(s) </p>
                         </div>
                         <div>
                             <h2><?php echo $row['tarif'] ?> €</h2>

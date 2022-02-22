@@ -100,7 +100,7 @@
                             <div class="input-group">
                                 <small class="">Nombre de places</small>
                                 <div class="input-group-row m-0">
-                                    <input name="nbplaces" class="input-sm rounded-0" type="text" placeholder="Ex: 1, 2, 3" />
+                                    <input name="nbplaces" class="input-sm rounded-0" type="text" placeholder="Ex: 1, 2, ..." />
                                     <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                                 </div>
