@@ -1,0 +1,22 @@
+/* Default footer style */
+footer {
+  padding-top: 80px;
+  color: var(--color-bg-primary);
+  background: var(--color-bg-primary-2);
+  #copyright-wrapper {
+    color: var(--color-bg-primary-2);
+  }
+
+  .social-media-item .fa {
+    font-size: 1.5rem;
+  }
+  .input-group-append .btn {
+    border: 1px solid var(--color-bg-primary);
+    color: var(--color-orange2);
+    &:hover {
+      background: var(--color-bg-primary);
+      color: var(--color-orange2);
+      transition: all 0.3s ease-in;
+    }
+  }
+}
