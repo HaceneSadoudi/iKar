@@ -1,3 +1,77 @@
+/* ###################################### */
+/* ######### Custom Style sheet ######### */
+/* ###################################### */
+.button,
+.button2 {
+  color: var(--color-bg-primary);
+  transition: 0.3s ease all;
+  line-height: 1.5rem;
+  cursor: pointer;
+  &.button-sm {
+    line-height: 1.5rem;
+  }
+  &.button-lg {
+    line-height: 2rem;
+  }
+}
+/* Default button style */
+.button {
+  background: var(--color-orange2);
+  padding: 0.7rem 4rem;
+  border: 0px;
+  border-radius: 30px;
+  &:hover {
+    background-color: var(--color-orange2-shade);
+  }
+}
+/* Default button2 style */
+.button2 {
+  background: transparent;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--color-bg-primary);
+  &:hover {
+    background-color: var(--color-bg-primary);
+    color: var(--color-bg-primary-2);
+  }
+}
+/* Default input style */
+input {
+  font-size: 1rem;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+  &.input-sm {
+    line-height: 1.5rem;
+  }
+  &.input-lg {
+    line-height: 2rem;
+    font-size: 1.1rem;
+  }
+  &.button,
+  &.button2 {
+    width: auto;
+  }
+}
+/* Default anchor style */
+a {
+  color: var(--color-bg-primary);
+  transition: opacity 0.3s ease-in;
+  padding: 0.1rem;
+  font-size: 0.9rem;
+  &:hover {
+    color: var(--color-bg-primary-offset);
+    transition: opacity 0.3s ease-in;
+  }
+}
+/* Default paragraph style */
+p {
+  font-size: 0.9rem;
+}
+
 /* Default footer style */
 footer {
   padding-top: 80px;
@@ -19,4 +93,8 @@ footer {
       transition: all 0.3s ease-in;
     }
   }
+}
+/* Default icon style */
+.fa {
+  font-size: 1rem;
 }
