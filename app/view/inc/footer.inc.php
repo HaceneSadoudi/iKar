@@ -4,9 +4,9 @@
             <div class="col-lg-4 col-md-6 mb-4">
                 <p class="font-italic text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.dummy text of the printing and typesetting industry</p>
                 <ul class="list-inline mt-4 social-media">
-                    <li class="social-media-item list-inline-item"><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li>
-                    <li class="social-media-item list-inline-item"><a href=""><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-                    <li class="social-media-item list-inline-item"><a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li class="social-media-item list-inline-item mr-4"><a href="https://github.com/HaceneSadoudi" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                    <li class="social-media-item list-inline-item mr-4"><a href="https://www.behance.net/sadoudihacene" target="_blank"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+                    <li class="social-media-item list-inline-item mr-4"><a href="https://www.linkedin.com/in/hacene-sadoudi/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
             <div class="col-lg-2 col-md-6 mb-4">
