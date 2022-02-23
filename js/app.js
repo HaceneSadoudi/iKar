@@ -5,8 +5,8 @@ import { validatePassword, validateLength } from "./validation.js";
 /* ############################################################# */
 $(document).on("click", ".progress-bar__dot", function (e) {
   const targetStepIndex = $(this).index(".progress-bar__dot");
-  const targetStep = $("#register-form .step").eq(targetStepIndex);
-  const currentStep = $("#register-form .step.active");
+  const targetStep = $("#custom-form .step").eq(targetStepIndex);
+  const currentStep = $("#custom-form .step.active");
   const currentStepIndex = currentStep.index();
   const dots = $(this).parent().find(".progress-bar__dot");
   console.log("[C:" + currentStepIndex + "],[T:" + targetStepIndex + "]");
