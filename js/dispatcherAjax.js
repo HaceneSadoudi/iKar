@@ -205,7 +205,7 @@ $(document).ready(function () {
   /* ############################################################# */
   /* #######################  CONNEXION  ######################### */
   /* ############################################################# */
-  $("#page_maincontent").on("submit", "#login-form", function (e) {
+  $("#page_maincontent").on("submit", "#custom-form", function (e) {
     e.preventDefault();
     const usernameInput = $(this).find("input[name=identifiant]");
     const passwordInput = $(this).find("input[name=pass]");
@@ -263,7 +263,7 @@ $(document).ready(function () {
   /* ############################################################# */
   /* ###############  ENTER EVENT (REGISTER FORM)  ############### */
   /* ############################################################# */
-  $(document).on("keyup", "#register-form", function (e) {
+  $(document).on("keyup", "#custom-form", function (e) {
     const isLastInputInStep = $(e.target)
       .parents(".input-group")
       .next()
@@ -280,12 +280,12 @@ $(document).ready(function () {
   /* ############################################################# */
   $(document).on(
     "keypress",
-    "#login-form input[name=identifiant]",
+    "#custom-form input[name=identifiant]",
     function (e) {
       if (e.which == 13) {
         const usernameInput = $(this);
         const passwordInput = $(this)
-          .parents("#login-form")
+          .parents("#custom-form")
           .find("input[name=pass]");
 
         e.preventDefault(); // Prevent submitting when the user clicks Enter key inside username input
@@ -390,7 +390,7 @@ $(document).ready(function () {
   /* ############################################################# */
   /* ###################  PASSWORD VALIDATION  ################### */
   /* ############################################################# */
-  $(document).on("keyup", "#register-form input[name=pass]", function (e) {
+  $(document).on("keyup", "#custom-form input[name=pass]", function (e) {
     e.preventDefault();
     const password = $(this).val().trim();
     const constraint_item = $(this)
@@ -478,9 +478,9 @@ $(document).ready(function () {
   /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
   /* ############################################################# */
-  $("#page_maincontent").on("click", "#register-form #submit", (e) => {
+  $("#page_maincontent").on("click", "#custom-form #submit", (e) => {
     const passwordInput = $(e.target).parents(".step").find("input[name=pass]");
-    const form = $("#register-form");
+    const form = $("#custom-form");
     // Clean inputs
     const lastname = form.find("input[name=nom]").val().trim();
     const firstname = form.find("input[name=prenom]").val().trim();
