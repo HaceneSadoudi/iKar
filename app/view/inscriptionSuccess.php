@@ -1,7 +1,7 @@
 <div id="register-container">
     <div class="row m-0">
-        <div class="col-lg-7 register-form__container">
-            <div class="register-form__wrapper">
+        <div class="col-lg-7 custom-form__container">
+            <div class="custom-form__wrapper">
                 <ul class="progress-bar">
                     <li class="progress-bar__dot current"><span>1</span><i class="fa fa-check"></i></li>
                     <li class="progress-bar__connector"></li>
@@ -10,7 +10,7 @@
                     <li class="progress-bar__dot"><span>3</span><i class="fa fa-check"></i></li>
                 </ul>
                 <h1 class="title">Création de votre compte</h1>
-                <form id="register-form" class="" autocomplete="off">
+                <form id="custom-form" class="" autocomplete="off">
                     <div class="step active">
                         <div class="input-group">
                             <div class="input-group-row">
