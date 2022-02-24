@@ -205,7 +205,7 @@ $(document).ready(function () {
   /* ############################################################# */
   /* #######################  CONNEXION  ######################### */
   /* ############################################################# */
-  $("#page_maincontent").on("submit", "#custom-form", function (e) {
+  $("#page_maincontent").on("submit", "#js-signin-form", function (e) {
     e.preventDefault();
     const usernameInput = $(this).find("input[name=identifiant]");
     const passwordInput = $(this).find("input[name=pass]");
@@ -263,7 +263,7 @@ $(document).ready(function () {
   /* ############################################################# */
   /* ###############  ENTER EVENT (REGISTER FORM)  ############### */
   /* ############################################################# */
-  $(document).on("keyup", "#custom-form", function (e) {
+  $(document).on("keyup", "#js-signup-form", function (e) {
     const isLastInputInStep = $(e.target)
       .parents(".input-group")
       .next()
@@ -280,7 +280,7 @@ $(document).ready(function () {
   /* ############################################################# */
   $(document).on(
     "keypress",
-    "#custom-form input[name=identifiant]",
+    "#js-signin-form input[name=identifiant]",
     function (e) {
       if (e.which == 13) {
         const usernameInput = $(this);
@@ -390,7 +390,7 @@ $(document).ready(function () {
   /* ############################################################# */
   /* ###################  PASSWORD VALIDATION  ################### */
   /* ############################################################# */
-  $(document).on("keyup", "#custom-form input[name=pass]", function (e) {
+  $(document).on("keyup", "#js-signup-form input[name=pass]", function (e) {
     e.preventDefault();
     const password = $(this).val().trim();
     const constraint_item = $(this)
@@ -478,9 +478,9 @@ $(document).ready(function () {
   /* ############################################################# */
   /* #######################  INSCRIPTION  ####################### */
   /* ############################################################# */
-  $("#page_maincontent").on("click", "#custom-form #submit", (e) => {
+  $("#page_maincontent").on("click", "#js-signup-form #submit", (e) => {
     const passwordInput = $(e.target).parents(".step").find("input[name=pass]");
-    const form = $("#custom-form");
+    const form = $("#js-signup-form");
     // Clean inputs
     const lastname = form.find("input[name=nom]").val().trim();
     const firstname = form.find("input[name=prenom]").val().trim();
