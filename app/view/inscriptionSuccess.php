@@ -1,4 +1,4 @@
-<div id="register-container">
+<div id="custom-form__section">
     <div class="row m-0">
         <div class="col-lg-7 custom-form__container">
             <div class="custom-form__wrapper">
@@ -88,8 +88,8 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-5 register-info__container">
-            <div class="register-info__wrapper">
+        <div class="col-lg-5 custom-info__container">
+            <div class="custom-info__wrapper">
             </div>
         </div>
     </div>
