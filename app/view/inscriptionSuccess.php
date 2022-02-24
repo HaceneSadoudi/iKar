@@ -10,7 +10,7 @@
                     <li class="progress-bar__dot"><span>3</span><i class="fa fa-check"></i></li>
                 </ul>
                 <h1 class="title">Création de votre compte</h1>
-                <form id="custom-form" class="" autocomplete="off">
+                <form id="js-signup-form" class="custom-form" autocomplete="off">
                     <div class="step active">
                         <div class="input-group">
                             <div class="input-group-row">

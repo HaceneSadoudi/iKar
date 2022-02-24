@@ -3,7 +3,7 @@
         <div class="col-lg-7 custom-form__container">
             <div class="custom-form__wrapper">
                 <h1 class="title">S'identifier</h1>
-                <form id="custom-form" class="" autocomplete="off">
+                <form id="js-signin-form" class="custom-form" autocomplete="off">
                     <div class="input-group">
                         <div class="input-group-row">
                             <input name="identifiant" class="input-lg w-100" type="text" placeholder="Identifiant" />
