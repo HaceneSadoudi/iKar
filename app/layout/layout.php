@@ -53,6 +53,13 @@
   <script src="js/main.js"></script>
   <script src="js/app.js" type="module"></script>
   <script src="js/dispatcherAjax.js" type="module"></script>
+  <script>
+    $(function() {
+      $("#datetimepicker").datetimepicker({
+        format: "LT",
+      });
+    });
+  </script>
 </body>
 
 </html>
