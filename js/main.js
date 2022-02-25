@@ -341,3 +341,30 @@ jQuery(document).ready(function ($) {
     });
   };
   siteScroll();
+
+   var counter = function () {
+    $("#about-section").waypoint(
+      function (direction) {
+        if (
+          direction === "down" &&
+          !$(this.element).hasClass("ftco-animated")
+        ) {
+          var comma_separator_number_step =
+            $.animateNumber.numberStepFactories.separator(",");
+          $(".number > span").each(function () {
+            var $this = $(this),
+              num = $this.data("number");
+            $this.animateNumber(
+              {
+                number: num,
+                numberStep: comma_separator_number_step,
+              },
+              7000
+            );
+          });
+        }
+      },
+      { offset: "95%" }
+    );
+  };
+  counter();
