@@ -6,7 +6,7 @@
                 <form id="js-propose-form" class="custom-form" autocomplete="off">
                     <div class="input-group">
                         <div class="input-group-row form-group">
-                            <select class="" id="" required>
+                            <select class="" id="" name="depart" required>
                                 <option value="" hidden>Ville de départ</option>
                                 <?php foreach ($context->allCities as $row) { ?>
                                     <option value="<?php echo $row['depart'] ?>"><?php echo $row['depart'] ?></option>
@@ -19,7 +19,7 @@
                     </div>
                     <div class="input-group">
                         <div class="input-group-row">
-                            <select class="input-lg w-100" name="depart" required>
+                            <select class="input-lg w-100" name="arrivee" required>
                                 <option value="" disabled selected hidden>Ville d'arrivée </option>
                                 <?php foreach ($context->allCities as $row) { ?>
                                     <option value="<?php echo $row['depart'] ?>"><?php echo $row['depart'] ?></option>
@@ -32,7 +32,8 @@
                     </div>
                     <div class="input-group">
                         <div class="input-group-row">
-                            <input name="nbplaces" class="input-lg w-100" type="number" max="15" placeholder="Nombre de places" required />
+                            <!-- // TODO put back (min & requred) -->
+                            <input name="nbplaces" class="input-lg w-100" type="number" placeholder="Nombre de places" />
                             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                             <i class="fa fa-check-circle" aria-hidden="true"></i>
                         </div>
@@ -40,7 +41,7 @@
                     </div>
                     <div class="input-group">
                         <div class="input-group-row">
-                            <input name="nbplaces" class="input-lg w-100" type="number" placeholder="Prix par place" required />
+                            <input name="tarif" class="input-lg w-100" type="number" placeholder="Prix par place" />
                             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                             <i class="fa fa-check-circle" aria-hidden="true"></i>
                         </div>
@@ -48,14 +49,14 @@
                     </div>
                     <div class="input-group">
                         <div class="input-group-row">
-                            <input name="depart" class="input-lg w-100" type="text" placeholder="Contraintes" />
+                            <input name="depart" name="constraintes" class="input-lg w-100" type="text" placeholder="Contraintes" />
                             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                             <i class="fa fa-check-circle" aria-hidden="true"></i>
                         </div>
                         <small class="alert-message">Error</small>
                     </div>
                     <div class="input-group mb-3">
-                        <input class="button button-lg" id="submit" type="button" value="Valider">
+                        <input class="button button-lg" id="submit" type="submit" value="Valider">
                     </div>
                 </form>
             </div>
