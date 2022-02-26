@@ -25,6 +25,18 @@ class trajetTable {
         return $cities;
     }
 
+    public static function getAllCities() {
+        $em = dbconnection::getInstance()->getEntityManager();
+        $trajetRepo = $em->getRepository('trajet');
+        $qb = $trajetRepo->createQueryBuilder('t');
+        $cities = $qb->select('DISTINCT t.depart')
+            ->orderBy('t.depart', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        return $cities;
+    }
+
     public static function setTrajet($depart, $arrivee, $distance) {
         $em = dbconnection::getInstance()->getEntityManager();
         $t = new trajet();
