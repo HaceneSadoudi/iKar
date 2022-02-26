@@ -76,6 +76,8 @@ class mainController {
 			} else echo 0;
 			return context::NONE;
 		}
+		// Get all cities
+		$context->allCities = trajetTable::getAllCities();
 		return context::SUCCESS;
 	}
 
