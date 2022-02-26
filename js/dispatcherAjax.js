@@ -532,8 +532,15 @@ $(document).ready(function () {
   /* ############################################################# */
   /* #########################  PROPOSER  ######################## */
   /* ############################################################# */
-  $(document).on("submit", "#proposeForm", function (e) {
+  $(document).on("submit", "#js-propose-form", function (e) {
     var formData = $(this).serialize();
+    // Clean inputs
+    const depart = $(this).find("input[name=depart]").val().trim();
+    const arrivee = $(this).find("input[name=arrivee]").val().trim();
+    const nbplaces = $(this).find("input[name=nbplaces]").val().trim();
+    const tarif = $(this).find("input[name=tarif]").val().trim();
+    const contraintes = $(this).find("input[name=contraintes]").val().trim();
+
     console.log(formData);
     e.preventDefault();
     $.ajax({
