@@ -546,29 +546,22 @@ $(document).ready(function () {
     const nbplaces = nbplacesInput.val().trim();
     const tarif = tarifInput.val().trim();
     const constraintes = constraintesInput.val().trim();
-      data: formData,
-      success: function (response, status) {
-        console.log(response);
-        if (response == 0) {
-          notif("error", "Ce trajet n'est pas disponible");
-        } else if (response == 1) {
-          notif("success", "Votre voyage a été publié");
-          setTimeout(function () {
-            window.location.href = "index.php";
-          }, 3500);
-        } else {
-          notif(
-            "error",
-            "Une erreur s'est produite. Veuillez réessayer plus tard"
-          );
-        }
-      },
-      error: function (jqXhr, textStatus, errorThrown) {
-        notif(
-          "error",
-          "Une erreur s'est produite. Veuillez réessayer plus tard"
-        );
-      },
-    });
+    // Validation
+    const allChecked = true;
+    if (parseInt(nbplaces) <= 0 || parseInt(nbplaces) > 15 || nbplaces == "") {
+      nbplacesInput.parent().addClass("animate__animated animate__shakeX");
+      showError(
+        nbplacesInput,
+        "Nombre de places ne doit pas etre inférieur à 0 et supérieur à 15"
+      );
+      allChecked = false;
+    } else {
+      hideError(nbplacesInput);
+    }
+    if (parseInt(tarif) > 1000 || tarif == "") {
+      tarifInput.parent().addClass("animate__animated animate__shakeX");
+      showError(tarifInput, "Le prix est déraisonnable");
+      allChecked = false;
+    } else hideError(tarifInput);
   });
 });
