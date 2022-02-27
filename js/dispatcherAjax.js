@@ -535,17 +535,17 @@ $(document).ready(function () {
   $(document).on("submit", "#js-propose-form", function (e) {
     var formData = $(this).serialize();
     // Clean inputs
-    const depart = $(this).find("input[name=depart]").val().trim();
-    const arrivee = $(this).find("input[name=arrivee]").val().trim();
-    const nbplaces = $(this).find("input[name=nbplaces]").val().trim();
-    const tarif = $(this).find("input[name=tarif]").val().trim();
-    const contraintes = $(this).find("input[name=contraintes]").val().trim();
-
-    console.log(formData);
-    e.preventDefault();
-    $.ajax({
-      url: "dispatcherAjax.php?action=proposeVoyage",
-      type: "POST",
+    const depart = $(this)
+      .find("select[name=depart] option:selected")
+      .val()
+      .trim();
+    const arrivee = $(this)
+      .find("select[name=arrivee] option:selected")
+      .val()
+      .trim();
+    const nbplaces = nbplacesInput.val().trim();
+    const tarif = tarifInput.val().trim();
+    const constraintes = constraintesInput.val().trim();
       data: formData,
       success: function (response, status) {
         console.log(response);
