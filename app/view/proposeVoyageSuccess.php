@@ -49,7 +49,7 @@
                     </div>
                     <div class="input-group">
                         <div class="input-group-row">
-                            <input name="depart" name="constraintes" class="input-lg w-100" type="text" placeholder="Contraintes" />
+                            <input name="constraintes" class="input-lg w-100" type="text" placeholder="Contraintes" />
                             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                             <i class="fa fa-check-circle" aria-hidden="true"></i>
                         </div>
