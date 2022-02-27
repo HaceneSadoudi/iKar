@@ -533,7 +533,11 @@ $(document).ready(function () {
   /* #########################  PROPOSER  ######################## */
   /* ############################################################# */
   $(document).on("submit", "#js-propose-form", function (e) {
+    e.preventDefault();
     var formData = $(this).serialize();
+    const nbplacesInput = $(this).find("input[name=nbplaces]");
+    const tarifInput = $(this).find("input[name=tarif]");
+    const constraintesInput = $(this).find("input[name=constraintes]");
     // Clean inputs
     const depart = $(this)
       .find("select[name=depart] option:selected")
