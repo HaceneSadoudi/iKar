@@ -67,9 +67,12 @@ class mainController {
 			&& isset($request['prix'])
 			&& isset($request['nbPlace'])
 		) {
-			$trajet = trajetTable::getTrajet($request['depart'], $request['arrivee']);
-			// TODO - if(heure & prix & place are not given , they will be replaced by blank text and then doctrine insert blank text in place of number)
-			if ($trajet != NULL) {
+			// Clean data
+			$depart = validation::clean($request['depart']);
+			$arrivee = validation::clean($request['arrivee']);
+			$tarif = validation::clean($request['tarif']);
+			$nbplaces = validation::clean($request['nbplaces']);
+			$constraintes = validation::clean($request['constraintes']);
 				$user = utilisateurTable::getUserById($context->getSessionAttribute('id'));
 				$v = voyageTable::setVoyage($user, $trajet, $request['prix'], $request['nbPlace'], $request['heureDepart'], $request['contraintes']);
 				echo 1;
