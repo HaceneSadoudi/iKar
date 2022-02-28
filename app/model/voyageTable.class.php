@@ -46,6 +46,19 @@ class voyageTable {
         $em->flush();
     }
 
+    public static function isVoyageExists($conducteur, $trajet, $heureDepart) {
+        $em = dbconnection::getInstance()->getEntityManager();
+        $voyageRepo = $em->getRepository('voyage');
+        $voyage = $voyageRepo->findBy(
+            array(
+                "conducteur" => $conducteur,
+                "trajet" => $trajet,
+                "heureDepart" => $heureDepart
+            )
+        );
+        return $voyage;
+    }
+
     public static function updateVoyage($voyage, $reserve) {
         $em = dbconnection::getInstance()->getEntityManager();
         $v = $em->getRepository('voyage')->findOneBy($voyage);
