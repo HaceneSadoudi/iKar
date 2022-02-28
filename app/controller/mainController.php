@@ -63,9 +63,9 @@ class mainController {
 		if (
 			isset($request['depart'])
 			&& isset($request['arrivee'])
-			&& isset($request['heureDepart'])
-			&& isset($request['prix'])
-			&& isset($request['nbPlace'])
+			&& isset($request['tarif'])
+			&& isset($request['nbplaces'])
+			&& isset($request['constraintes'])
 		) {
 			// Clean data
 			$depart = validation::clean($request['depart']);
@@ -85,10 +85,28 @@ class mainController {
 				$nbplaces <= 15
 			) {
 				$trajet = trajetTable::getTrajet($depart, $arrivee);
-				$user = utilisateurTable::getUserById($context->getSessionAttribute('id'));
-				$v = voyageTable::setVoyage($user, $trajet, $request['prix'], $request['nbPlace'], $request['heureDepart'], $request['contraintes']);
-				echo 1;
-			} else echo 0;
+				// TODO - if(heure & prix & place are not given , they will be replaced by blank text and then doctrine insert blank text in place of number)
+				if ($trajet != NULL) {
+					// Check if the ride exists
+					if (!voyageTable::isVoyageExists($context->getSessionAttribute('id'), $trajet, 12)) {
+						$user = utilisateurTable::getUserById($context->getSessionAttribute('id'));
+						$v = voyageTable::setVoyage($user, $trajet, $tarif, $nbplaces, "12", $constraintes);
+						echo json_encode(array(
+							"status" => 1,
+							"message" => "Votre voyage a été publié"
+						));
+					} else echo json_encode(array(
+						"status" => 0,
+						"message" => "Ce voyage existe déjà!"
+					));
+				} else echo json_encode(array(
+					"status" => 0,
+					"message" => "Le trajet sélectionner n'existe pas!"
+				));
+			} else echo json_encode(array(
+				"status" => 0,
+				"message" => "Les données entrées sont invalides!"
+			));
 			return context::NONE;
 		}
 		// Get all cities
