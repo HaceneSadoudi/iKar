@@ -73,6 +73,18 @@ class mainController {
 			$tarif = validation::clean($request['tarif']);
 			$nbplaces = validation::clean($request['nbplaces']);
 			$constraintes = validation::clean($request['constraintes']);
+			// Validate data
+			if (
+				validation::isCityExists($depart) &&
+				validation::isCityExists($arrivee) &&
+				is_numeric($tarif) &&
+				$tarif > 0 &&
+				$tarif <= 1000 &&
+				is_numeric($nbplaces) &&
+				$nbplaces > 0 &&
+				$nbplaces <= 15
+			) {
+				$trajet = trajetTable::getTrajet($depart, $arrivee);
 				$user = utilisateurTable::getUserById($context->getSessionAttribute('id'));
 				$v = voyageTable::setVoyage($user, $trajet, $request['prix'], $request['nbPlace'], $request['heureDepart'], $request['contraintes']);
 				echo 1;
