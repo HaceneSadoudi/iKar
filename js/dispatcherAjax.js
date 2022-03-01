@@ -551,7 +551,7 @@ $(document).ready(function () {
     const tarif = tarifInput.val().trim();
     const constraintes = constraintesInput.val().trim();
     // Validation
-    const allChecked = true;
+    let allChecked = true;
     if (parseInt(nbplaces) <= 0 || parseInt(nbplaces) > 15 || nbplaces == "") {
       nbplacesInput.parent().addClass("animate__animated animate__shakeX");
       showError(
@@ -567,5 +567,41 @@ $(document).ready(function () {
       showError(tarifInput, "Le prix est déraisonnable");
       allChecked = false;
     } else hideError(tarifInput);
+    if (allChecked) {
+      $.ajax({
+        url: "dispatcherAjax.php?action=proposeVoyage",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+          depart: depart,
+          arrivee: arrivee,
+          nbplaces: nbplaces,
+          tarif: tarif,
+          constraintes: constraintes,
+        },
+        success: function (response, status) {
+          console.log(response);
+          if (response.status == 0) {
+            notif("error", response.message);
+          } else if (response.status == 1) {
+            notif("success", response.message);
+            setTimeout(function () {
+              window.location.href = "index.php";
+            }, 3500);
+          } else {
+            notif(
+              "error",
+              "Une erreur s'est produite. Veuillez réessayer plus tard"
+            );
+          }
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+          notif(
+            "error",
+            "Une erreur s'est produite. Veuillez réessayer plus tard"
+          );
+        },
+      });
+    }
   });
 });
