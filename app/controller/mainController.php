@@ -59,6 +59,11 @@ class mainController {
 		return context::SUCCESS;
 	}
 
+	public static function profile($request, $context) {
+
+		return context::SUCCESS;
+	}
+
 	public static function proposeVoyage($request, $context) {
 		if (
 			isset($request['depart'])
