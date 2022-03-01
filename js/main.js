@@ -368,3 +368,4 @@ jQuery(document).ready(function ($) {
     );
   };
   counter();
+})
