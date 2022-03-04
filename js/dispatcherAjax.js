@@ -145,7 +145,6 @@ $(document).ready(function () {
       url: "dispatcherAjax.php?action=proposeVoyage",
       type: "POST",
       success: function (response, status) {
-        console.log(response);
         $("#page_maincontent").empty();
         $("#page_maincontent").html(response);
       },
