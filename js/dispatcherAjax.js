@@ -104,6 +104,29 @@ $(document).ready(function () {
       $("#search-result").empty();
     }
   });
+
+  /* ############################################################# */
+  /* ######################### PROFILE ########################### */
+  /* ############################################################# */
+  $(document).on("click", ".js-profile-button", function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: "dispatcherAjax.php?action=profile",
+      type: "POST",
+      dataType: "text",
+      success: function (response, statut) {
+        $("#page_maincontent").empty();
+        $("#page_maincontent").html(response);
+      },
+      error: function (jqXhr, textStatus, errorThrown) {
+        console.log(errorThrown);
+        notif(
+          "error",
+          "Une erreur s'est produite. Veuillez réessayer plus tard"
+        );
+      },
+    });
+  });
   /* ############################################################# */
   /* #########  HOME FORM SEARCH + NAV SEARCH BUTTON  ############ */
   /* ############################################################# */
