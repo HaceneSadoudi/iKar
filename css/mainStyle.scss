@@ -112,3 +112,43 @@ input[type="number"] {
 .fa {
   font-size: 1rem;
 }
+/* Default select list style */
+.select-menu {
+  flex-direction: column;
+  background-color: var(--color-bg-secondary);
+  box-shadow: 0 10px 20px rgba(#404040, 0.15);
+  width: 100%;
+  right: 0px;
+  margin-top: 0px;
+  position: absolute;
+  top: calc(100% + 5px);
+  z-index: 9999;
+  color: var(--color-bg-primary-2);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  li {
+    line-height: 40px;
+    .select-menu__button {
+      font: inherit;
+      font-weight: 600;
+      border: 0;
+      padding-right: 36px;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      font-size: 0.9rem;
+      align-items: center;
+      position: relative;
+      display: inline-block;
+      color: var(--color-text-primary-offset);
+      padding: 0 8px;
+      background-color: var(--color-bg-secondary);
+      &:hover {
+        background-color: var(--color-bg-primary-offset);
+        & + .menu-sub-list {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+.bg-img {
