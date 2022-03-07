@@ -42,7 +42,7 @@
                                         <div class="menu">
                                             <ul class="menu-list">
                                                 <li class="menu-item">
-                                                    <a href="" class="menu-button"><i class="fa fa-user-o" aria-hidden="true"></i>Profile</a>
+                                                    <a href="" class="menu-button js-profile-button"><i class="fa fa-user-o" aria-hidden="true"></i>Profile</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a href="" class="menu-button"><i class="fa fa-sliders" aria-hidden="true"></i>Settings</a>
